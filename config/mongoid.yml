@@ -1,0 +1,37 @@
+development:
+  sessions:
+    default:
+      hosts:
+        - localhost:27017
+      database: smpp_gateway_development
+      options:
+        consistency: :eventual
+
+test:
+  sessions:
+    default:
+      hosts:
+        - localhost:27017
+      database: smpp_gateway_test
+      options:
+        consistency: :eventual
+
+# set these environment variables on your prod server
+production:
+  sessions:
+    default:
+      hosts:
+        - localhost:27017
+      database: smpp_gateway_production
+      options:
+        consistency: :eventual
+  #host: <%= ENV['MONGOID_HOST'] %>
+  #port: <%= ENV['MONGOID_PORT'] %>
+  #username: <%= ENV['MONGOID_USERNAME'] %>
+  #password: <%= ENV['MONGOID_PASSWORD'] %>
+  #database: <%= ENV['MONGOID_DATABASE'] %>
+  # slaves:
+  #   - host: slave1.local
+  #     port: 27018
+  #   - host: slave2.local
+  #     port: 27019

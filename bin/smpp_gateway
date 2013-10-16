@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+#
+# Stub executable for smpp_gateway
+#
+
+require File.expand_path('../../config/environment',  __FILE__)
+
+DaemonKit::Application.exec( DAEMON_ROOT + '/libexec/smpp_gateway-daemon.rb' )

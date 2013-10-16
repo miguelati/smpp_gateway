@@ -1,0 +1,29 @@
+configuration:
+  version: 1.0
+  name: smpp_gateway
+  database:
+    user: "test"
+    passwod: "12345"
+  channels:
+    - 
+      name: "Turnos"
+      pool_size: 3
+      activemq_topic_sender: com.smpp_gateway.turnos.sender
+      activemq_topic_receiver: com.smpp_gateway.turnos.receiver
+      receiver_expression: '^(turno|turnos)'
+      short_number: 20800
+      kannel_user: PERSONAL
+      kannel_pass: abc12345
+      kannel_url: http://localhost:13013/cgi-bin/sendsms
+      default: 1
+    -
+      name: "Bulk"
+      pool_size: 2
+      activemq_topic_sender: com.smpp_gateway.bulk.sender
+      activemq_topic_receiver: com.smpp_gateway.bulk.receiver
+      receiver_expression: '^(bulk|bul)'
+      short_number: 0971454545
+      kannel_user: PERSONAL
+      kannel_pass: abc12345
+      kannel_url: http://localhost:13013/cgi-bin/sendsms
+      default: 0

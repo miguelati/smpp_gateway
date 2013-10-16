@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+#require 'benchmark'
+require './lib/receiver_inbox'
+
+# %P => receiver(us)# %p => sender # %a => message %t => datetime %d => delivery_report_value %c message coding %u billing_information %D metadata
+
+ReceiverInbox.perform(ARGV)
