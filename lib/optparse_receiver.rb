@@ -1,7 +1,3 @@
-require 'optparse'
-require 'date'
-require 'pp'
-
 class OptparseReceiver
 
   CODES = %w[iso-2022-jp shift_jis euc-jp utf8 binary]

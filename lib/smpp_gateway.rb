@@ -1,5 +1,9 @@
 # Your starting point for daemon specific classes. This directory is
 # already included in your load path, so no need to specify it.
+require 'celluloid/autostart'
+require 'em-kannel'
+require 'json'
+
 require 'channel_factory'
 
 $supervisor = Celluloid::SupervisionGroup.run!

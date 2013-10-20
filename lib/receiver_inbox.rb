@@ -1,11 +1,6 @@
 # to compile
 # rbx compile -s '^lib:lib-compiled' lib/
 
-require 'mongoid'
-require 'amqp'
-require 'mq'
-require './lib/optparse_receiver'
-
 $config = YAML::load(File.open("#{File.dirname(__FILE__)}/../config/configurations.yml"))
 $amq = YAML::load(File.open("#{File.dirname(__FILE__)}/../config/amqp.yml"))
 
@@ -23,7 +18,7 @@ class ReceiverInbox
     Receiver.create(from: options[:from], to: options[:to], message: options[:message], app: channel['name'].downcase, status: 'success', incoming_at: options[:incoming_at], delivery_report_value: options[:delivery_report], metadata_tlv: options[:metadata])
     
     EventMachine.run do
-      connection = AMQP.connect({:user=>"guest", :pass=>"guest", :host=>"localhost", :vhost=>"/"})
+      connection = AMQP.connect($amq['default'])
 
       ch  = AMQP::Channel.new(connection)
       q   = ch.queue(channel['activemq_topic_receiver'])

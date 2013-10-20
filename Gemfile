@@ -16,8 +16,6 @@ gem 'safely'
 # gem 'toadhopper' # For reporting exceptions to hoptoad
 # gem 'mail' # For reporting exceptions via mail
 gem 'amqp'
-gem 'mq'
-gem 'bunny'
 gem "rubysl", "~> 2.0"
 gem "em-kannel"
 gem 'celluloid'

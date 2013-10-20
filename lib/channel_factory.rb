@@ -1,7 +1,3 @@
-require 'celluloid/autostart'
-require 'em-kannel'
-require 'json'
-
 class ChannelFactory
   def self.create(channel_name)
     c = Class.new() do
@@ -19,12 +15,6 @@ class ChannelFactory
         @sender.queue(@options['activemq_topic_sender'], auto_delete: true).subscribe do |msg|
           process_message(msg)
         end
-        
-        #@receiver = AMQP::Channel.new
-        #test = @receiver.fanout("smpp_gateway.subscribe", auto_delete: true)
-        #@receiver.queue(@options['activemq_topic_receiver']).bind(test).subscribe do |msg|
-        #  puts msg.inspect
-        #end
       end
       
       def process_message(msg)
