@@ -20,26 +20,29 @@ class ChannelFactory
           process_message(msg)
         end
         
-        @receiver = AMQP::Channel.new
-        test = @receiver.fanout("smpp_gateway.subscribe", auto_delete: true)
-        @receiver.queue(@options['activemq_topic_receiver']).bind(test).subscribe do |msg|
-          puts msg.inspect
-        end
+        #@receiver = AMQP::Channel.new
+        #test = @receiver.fanout("smpp_gateway.subscribe", auto_delete: true)
+        #@receiver.queue(@options['activemq_topic_receiver']).bind(test).subscribe do |msg|
+        #  puts msg.inspect
+        #end
       end
       
       def process_message(msg)
         DaemonKit.logger.debug "Received message"
-        msg_parsed = JSON.parse(msg)
-        if msg_parsed['type'] == "1"
-          DaemonKit.logger.debug "Message type: 1"
-          send_sms(msg_parsed['body']);
-        elsif msg_parsed['type'] == "2"
-          DaemonKit.logger.debug "Message type: 2 with #{msg_parsed['body'].size} SMS"
-          msg_parsed['body'].each do |msg_to_send|
-            send_sms(msg_to_send)
+        begin
+          msg_parsed = JSON.parse(msg)
+          if msg_parsed['type'] == "1"
+            DaemonKit.logger.debug "Message type: 1"
+            send_sms(msg_parsed['body']);
+          elsif msg_parsed['type'] == "2"
+            DaemonKit.logger.debug "Message type: 2 with #{msg_parsed['body'].size} SMS"
+            msg_parsed['body'].each do |msg_to_send|
+              send_sms(msg_to_send)
+            end
           end
+        rescue Exception => e
+          puts e.inspect
         end
-        
       end
       
       def send_sms(msg)

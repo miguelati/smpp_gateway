@@ -10,6 +10,7 @@ configuration:
       pool_size: 3
       activemq_topic_sender: com.smpp_gateway.turnos.sender
       activemq_topic_receiver: com.smpp_gateway.turnos.receiver
+      activemq_topic_name: com.smpp_gateway.turnos.topic
       receiver_expression: '^(turno|turnos)'
       short_number: 20800
       kannel_user: PERSONAL
@@ -21,6 +22,7 @@ configuration:
       pool_size: 2
       activemq_topic_sender: com.smpp_gateway.bulk.sender
       activemq_topic_receiver: com.smpp_gateway.bulk.receiver
+      activemq_topic_name: com.smpp_gateway.bulk.topic
       receiver_expression: '^(bulk|bul)'
       short_number: 0971454545
       kannel_user: PERSONAL

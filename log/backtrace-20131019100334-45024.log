@@ -1,0 +1,5 @@
+# Logfile created on 2013-10-19 10:03:34 -0300 by logger.rb/v1.2.7
+*** Below you'll find the most recent exception thrown, this will likely (but not certainly) be the exception that made your application exit abnormally ***
+#<JSON::ParserError: 757: unexpected token at 'Hello World!'>
+*** Below you'll find all the exception objects in memory, some of them may have been thrown in your application, others may just be in memory because they are standard exceptions ***
+#<JSON::ParserError: 757: unexpected token at 'Hello World!'>
