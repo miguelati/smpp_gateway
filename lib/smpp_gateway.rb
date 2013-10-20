@@ -4,6 +4,7 @@ require 'celluloid/autostart'
 require 'em-kannel'
 require 'json'
 
+#Rubinius::CodeLoader.require_compiled 'channel_factory'
 require 'channel_factory'
 
 $supervisor = Celluloid::SupervisionGroup.run!
