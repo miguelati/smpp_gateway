@@ -12,6 +12,7 @@ class ReceiverInbox
   VERSION = 1.0
   def self.perform(args)
     options = OptparseReceiver.parse(args)
+    Commander.run(options)
     channel = $config['configuration']['channels'].find {|inner_hash| Regexp.new(inner_hash["receiver_expression"]).match(options[:message].downcase)}
     channel = $config['configuration']['channels'].find {|inner_hash| inner_hash["default"] == 1} if channel.nil?
     

@@ -16,10 +16,13 @@ gem 'safely'
 # gem 'toadhopper' # For reporting exceptions to hoptoad
 # gem 'mail' # For reporting exceptions via mail
 gem 'amqp'
-gem "rubysl", "~> 2.0"
+gem 'multi_json', '1.8.1'
 gem "em-kannel"
 gem 'celluloid'
 gem 'mongoid'
+gem 'activesupport', '3.1.12'
+gem 'rubysl-enumerator'
+gem 'rubysl-rexml'
 
 group :development, :test do
   gem 'rake'

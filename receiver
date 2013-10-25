@@ -7,10 +7,12 @@ require 'mongoid'
 require 'amqp'
 require 'mq'
 
-#Rubinius::CodeLoader.require_compiled './lib/optparse_receiver'
-#Rubinius::CodeLoader.require_compiled './lib/receiver_inbox'
-require './lib/optparse_receiver'
-require './lib/receiver_inbox'
+#Rubinius::CodeLoader.require_compiled "#{File.dirname(__FILE__)}/lib/optparse_receiver"
+#Rubinius::CodeLoader.require_compiled "#{File.dirname(__FILE__)}/lib/receiver_inbox"
+#Rubinius::CodeLoader.require_compiled "#{File.dirname(__FILE__)}/lib/commander"
+require "#{File.dirname(__FILE__)}/lib/optparse_receiver"
+require "#{File.dirname(__FILE__)}/lib/receiver_inbox"
+require "#{File.dirname(__FILE__)}/lib/commander"
 
 # %P => receiver(us)# %p => sender # %a => message %t => datetime %d => delivery_report_value %c message coding %u billing_information %D metadata
 
