@@ -1327,3 +1327,141 @@
 2013-10-25 11:37:58.196189 smpp_gateway(86332) [INFO] [daemon-kit]: Running signal traps for INT
 2013-10-25 11:37:58.196824 smpp_gateway(86332) [INFO] [daemon-kit]: Running shutdown hooks
 2013-10-25 11:37:58.197164 smpp_gateway(86332) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2013-10-26 09:06:21.652621 smpp_gateway(5509) [INFO] [daemon-kit]: DaemonKit (0.2.3) booting in development mode
+2013-10-26 09:06:21.654278 smpp_gateway(5509) [INFO] [daemon-kit]: Setting up trap for USR1
+2013-10-26 09:06:21.654605 smpp_gateway(5509) [INFO] [daemon-kit]: Setting up trap for USR2
+2013-10-26 09:06:21.654866 smpp_gateway(5509) [INFO] [daemon-kit]: Setting up trap for HUP
+2013-10-26 09:06:21.655136 smpp_gateway(5509) [INFO] [daemon-kit]: Setting up trap for INT
+2013-10-26 09:06:21.655383 smpp_gateway(5509) [INFO] [daemon-kit]: Setting up trap for TERM
+2013-10-26 09:06:21.676551 smpp_gateway(5509) [DEBUG] channel_factory.rb:10: Author: Kernel::TurnosChannel initialized
+2013-10-26 09:06:21.677634 smpp_gateway(5509) [DEBUG] channel_factory.rb:10: Author: Kernel::TurnosChannel initialized
+2013-10-26 09:06:21.678561 smpp_gateway(5509) [DEBUG] channel_factory.rb:10: Author: Kernel::TurnosChannel initialized
+2013-10-26 09:06:21.681334 smpp_gateway(5509) [DEBUG] channel_factory.rb:10: Author: Kernel::BulkChannel initialized
+2013-10-26 09:06:21.682106 smpp_gateway(5509) [DEBUG] channel_factory.rb:10: Author: Kernel::BulkChannel initialized
+2013-10-26 09:06:21.687083 smpp_gateway(5509) [INFO] [daemon-kit]: DaemonKit (0.2.3) booted, now running smpp_gateway
+2013-10-26 09:06:21.694300 smpp_gateway(5509) [DEBUG] [daemon-kit]: AMQP.start({:user=>"guest", :pass=>"guest", :host=>"localhost", :vhost=>"/"})
+2013-10-26 09:06:23.395700 smpp_gateway(5509) [INFO] [daemon-kit]: Running signal traps for INT
+2013-10-26 09:06:23.398487 smpp_gateway(5509) [INFO] [daemon-kit]: Running shutdown hooks
+2013-10-26 09:06:23.398735 smpp_gateway(5509) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2013-10-26 09:07:48.685542 smpp_gateway(5560) [INFO] [daemon-kit]: DaemonKit (0.2.3) booting in development mode
+2013-10-26 09:07:48.686877 smpp_gateway(5560) [INFO] [daemon-kit]: Setting up trap for USR1
+2013-10-26 09:07:48.687188 smpp_gateway(5560) [INFO] [daemon-kit]: Setting up trap for USR2
+2013-10-26 09:07:48.687465 smpp_gateway(5560) [INFO] [daemon-kit]: Setting up trap for HUP
+2013-10-26 09:07:48.687728 smpp_gateway(5560) [INFO] [daemon-kit]: Setting up trap for INT
+2013-10-26 09:07:48.687998 smpp_gateway(5560) [INFO] [daemon-kit]: Setting up trap for TERM
+2013-10-26 09:07:48.703330 smpp_gateway(5560) [DEBUG] channel_factory.rb:10: Author: Kernel::TurnosChannel initialized
+2013-10-26 09:07:48.704258 smpp_gateway(5560) [DEBUG] channel_factory.rb:10: Author: Kernel::TurnosChannel initialized
+2013-10-26 09:07:48.705067 smpp_gateway(5560) [DEBUG] channel_factory.rb:10: Author: Kernel::TurnosChannel initialized
+2013-10-26 09:07:48.707793 smpp_gateway(5560) [DEBUG] channel_factory.rb:10: Author: Kernel::BulkChannel initialized
+2013-10-26 09:07:48.708649 smpp_gateway(5560) [DEBUG] channel_factory.rb:10: Author: Kernel::BulkChannel initialized
+2013-10-26 09:07:48.712635 smpp_gateway(5560) [INFO] [daemon-kit]: DaemonKit (0.2.3) booted, now running smpp_gateway
+2013-10-26 09:07:48.718041 smpp_gateway(5560) [DEBUG] [daemon-kit]: AMQP.start({:user=>"guest", :pass=>"guest", :host=>"192.168.1.243", :vhost=>"/"})
+2013-10-26 09:07:50.418433 smpp_gateway(5560) [INFO] [daemon-kit]: Running shutdown hooks
+2013-10-26 09:07:50.418646 smpp_gateway(5560) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2013-10-26 09:08:20.991991 smpp_gateway(5576) [INFO] [daemon-kit]: DaemonKit (0.2.3) booting in development mode
+2013-10-26 09:08:20.993661 smpp_gateway(5576) [INFO] [daemon-kit]: Setting up trap for USR1
+2013-10-26 09:08:20.994145 smpp_gateway(5576) [INFO] [daemon-kit]: Setting up trap for USR2
+2013-10-26 09:08:20.994465 smpp_gateway(5576) [INFO] [daemon-kit]: Setting up trap for HUP
+2013-10-26 09:08:20.994784 smpp_gateway(5576) [INFO] [daemon-kit]: Setting up trap for INT
+2013-10-26 09:08:20.995082 smpp_gateway(5576) [INFO] [daemon-kit]: Setting up trap for TERM
+2013-10-26 09:08:21.12432 smpp_gateway(5576) [DEBUG] channel_factory.rb:10: Author: Kernel::TurnosChannel initialized
+2013-10-26 09:08:21.13473 smpp_gateway(5576) [DEBUG] channel_factory.rb:10: Author: Kernel::TurnosChannel initialized
+2013-10-26 09:08:21.14597 smpp_gateway(5576) [DEBUG] channel_factory.rb:10: Author: Kernel::TurnosChannel initialized
+2013-10-26 09:08:21.18167 smpp_gateway(5576) [DEBUG] channel_factory.rb:10: Author: Kernel::BulkChannel initialized
+2013-10-26 09:08:21.19113 smpp_gateway(5576) [DEBUG] channel_factory.rb:10: Author: Kernel::BulkChannel initialized
+2013-10-26 09:08:21.23555 smpp_gateway(5576) [INFO] [daemon-kit]: DaemonKit (0.2.3) booted, now running smpp_gateway
+2013-10-26 09:08:21.30385 smpp_gateway(5576) [DEBUG] [daemon-kit]: AMQP.start({:user=>"guest", :pass=>"guest", :host=>"192.168.1.243", :vhost=>"/"})
+2013-10-26 09:08:55.898153 smpp_gateway(5576) [DEBUG] channel_factory.rb:21: Received message
+2013-10-26 09:08:55.898954 smpp_gateway(5576) [DEBUG] channel_factory.rb:25: Message type: 1
+2013-10-26 09:09:33.759671 smpp_gateway(5576) [INFO] [daemon-kit]: Running signal traps for INT
+2013-10-26 09:09:33.760489 smpp_gateway(5576) [INFO] [daemon-kit]: Running shutdown hooks
+2013-10-26 09:09:33.761007 smpp_gateway(5576) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2013-10-26 09:09:42.622858 smpp_gateway(5612) [INFO] [daemon-kit]: DaemonKit (0.2.3) booting in development mode
+2013-10-26 09:09:42.624161 smpp_gateway(5612) [INFO] [daemon-kit]: Setting up trap for USR1
+2013-10-26 09:09:42.624502 smpp_gateway(5612) [INFO] [daemon-kit]: Setting up trap for USR2
+2013-10-26 09:09:42.624785 smpp_gateway(5612) [INFO] [daemon-kit]: Setting up trap for HUP
+2013-10-26 09:09:42.625041 smpp_gateway(5612) [INFO] [daemon-kit]: Setting up trap for INT
+2013-10-26 09:09:42.625280 smpp_gateway(5612) [INFO] [daemon-kit]: Setting up trap for TERM
+2013-10-26 09:09:42.643434 smpp_gateway(5612) [DEBUG] channel_factory.rb:10: Author: Kernel::TurnosChannel initialized
+2013-10-26 09:09:42.644311 smpp_gateway(5612) [DEBUG] channel_factory.rb:10: Author: Kernel::TurnosChannel initialized
+2013-10-26 09:09:42.645078 smpp_gateway(5612) [DEBUG] channel_factory.rb:10: Author: Kernel::TurnosChannel initialized
+2013-10-26 09:09:42.647852 smpp_gateway(5612) [DEBUG] channel_factory.rb:10: Author: Kernel::BulkChannel initialized
+2013-10-26 09:09:42.648630 smpp_gateway(5612) [DEBUG] channel_factory.rb:10: Author: Kernel::BulkChannel initialized
+2013-10-26 09:09:42.652473 smpp_gateway(5612) [INFO] [daemon-kit]: DaemonKit (0.2.3) booted, now running smpp_gateway
+2013-10-26 09:09:42.657896 smpp_gateway(5612) [DEBUG] [daemon-kit]: AMQP.start({:user=>"guest", :pass=>"guest", :host=>"192.168.1.243", :vhost=>"/"})
+2013-10-26 09:10:25.834336 smpp_gateway(5612) [DEBUG] channel_factory.rb:21: Received message
+2013-10-26 09:10:25.835095 smpp_gateway(5612) [DEBUG] channel_factory.rb:25: Message type: 1
+2013-10-26 09:20:33.648409 smpp_gateway(5612) [DEBUG] channel_factory.rb:21: Received message
+2013-10-26 09:20:33.649592 smpp_gateway(5612) [DEBUG] channel_factory.rb:25: Message type: 1
+2013-10-26 09:24:25.358858 smpp_gateway(5612) [DEBUG] channel_factory.rb:21: Received message
+2013-10-26 09:24:25.359173 smpp_gateway(5612) [DEBUG] channel_factory.rb:25: Message type: 1
+2013-10-26 09:41:46.325901 smpp_gateway(5612) [DEBUG] channel_factory.rb:21: Received message
+2013-10-26 09:41:46.326288 smpp_gateway(5612) [DEBUG] channel_factory.rb:25: Message type: 1
+2013-10-26 10:15:49.546601 smpp_gateway(5612) [INFO] [daemon-kit]: Running signal traps for INT
+2013-10-26 10:15:49.547327 smpp_gateway(5612) [INFO] [daemon-kit]: Running shutdown hooks
+2013-10-26 10:15:49.547725 smpp_gateway(5612) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2013-10-26 10:15:57.884658 smpp_gateway(8173) [INFO] [daemon-kit]: DaemonKit (0.2.3) booting in development mode
+2013-10-26 10:15:57.885983 smpp_gateway(8173) [INFO] [daemon-kit]: Setting up trap for USR1
+2013-10-26 10:15:57.886286 smpp_gateway(8173) [INFO] [daemon-kit]: Setting up trap for USR2
+2013-10-26 10:15:57.886537 smpp_gateway(8173) [INFO] [daemon-kit]: Setting up trap for HUP
+2013-10-26 10:15:57.886796 smpp_gateway(8173) [INFO] [daemon-kit]: Setting up trap for INT
+2013-10-26 10:15:57.887033 smpp_gateway(8173) [INFO] [daemon-kit]: Setting up trap for TERM
+2013-10-26 10:15:57.905322 smpp_gateway(8173) [DEBUG] channel_factory.rb:10: Author: Kernel::TurnosChannel initialized
+2013-10-26 10:15:57.909962 smpp_gateway(8173) [DEBUG] channel_factory.rb:10: Author: Kernel::TurnosChannel initialized
+2013-10-26 10:15:57.910777 smpp_gateway(8173) [DEBUG] channel_factory.rb:10: Author: Kernel::TurnosChannel initialized
+2013-10-26 10:15:57.913504 smpp_gateway(8173) [DEBUG] channel_factory.rb:10: Author: Kernel::BulkChannel initialized
+2013-10-26 10:15:57.914335 smpp_gateway(8173) [DEBUG] channel_factory.rb:10: Author: Kernel::BulkChannel initialized
+2013-10-26 10:15:57.918820 smpp_gateway(8173) [INFO] [daemon-kit]: DaemonKit (0.2.3) booted, now running smpp_gateway
+2013-10-26 10:15:57.925565 smpp_gateway(8173) [DEBUG] [daemon-kit]: AMQP.start({:user=>"guest", :pass=>"guest", :host=>"192.168.1.243", :vhost=>"/"})
+2013-10-26 10:20:57.658448 smpp_gateway(8173) [DEBUG] channel_factory.rb:21: Received message
+2013-10-26 10:20:57.659093 smpp_gateway(8173) [DEBUG] channel_factory.rb:25: Message type: 1
+2013-10-26 10:30:42.20280 smpp_gateway(8173) [DEBUG] channel_factory.rb:21: Received message
+2013-10-26 10:30:42.20950 smpp_gateway(8173) [DEBUG] channel_factory.rb:25: Message type: 1
+2013-10-26 10:35:11.989575 smpp_gateway(8173) [INFO] [daemon-kit]: Running signal traps for INT
+2013-10-26 10:35:11.990317 smpp_gateway(8173) [INFO] [daemon-kit]: Running shutdown hooks
+2013-10-26 10:35:11.990677 smpp_gateway(8173) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2013-10-26 10:35:20.123309 smpp_gateway(8525) [INFO] [daemon-kit]: DaemonKit (0.2.3) booting in development mode
+2013-10-26 10:35:20.124670 smpp_gateway(8525) [INFO] [daemon-kit]: Setting up trap for USR1
+2013-10-26 10:35:20.124980 smpp_gateway(8525) [INFO] [daemon-kit]: Setting up trap for USR2
+2013-10-26 10:35:20.125236 smpp_gateway(8525) [INFO] [daemon-kit]: Setting up trap for HUP
+2013-10-26 10:35:20.125492 smpp_gateway(8525) [INFO] [daemon-kit]: Setting up trap for INT
+2013-10-26 10:35:20.125732 smpp_gateway(8525) [INFO] [daemon-kit]: Setting up trap for TERM
+2013-10-26 10:35:20.145964 smpp_gateway(8525) [DEBUG] channel_factory.rb:10: Author: Kernel::TurnosChannel initialized
+2013-10-26 10:35:20.147112 smpp_gateway(8525) [DEBUG] channel_factory.rb:10: Author: Kernel::TurnosChannel initialized
+2013-10-26 10:35:20.147942 smpp_gateway(8525) [DEBUG] channel_factory.rb:10: Author: Kernel::TurnosChannel initialized
+2013-10-26 10:35:20.150715 smpp_gateway(8525) [DEBUG] channel_factory.rb:10: Author: Kernel::BulkChannel initialized
+2013-10-26 10:35:20.151536 smpp_gateway(8525) [DEBUG] channel_factory.rb:10: Author: Kernel::BulkChannel initialized
+2013-10-26 10:35:20.155553 smpp_gateway(8525) [INFO] [daemon-kit]: DaemonKit (0.2.3) booted, now running smpp_gateway
+2013-10-26 10:35:20.162614 smpp_gateway(8525) [DEBUG] [daemon-kit]: AMQP.start({:user=>"guest", :pass=>"guest", :host=>"192.168.1.243", :vhost=>"/"})
+2013-10-26 10:39:32.738277 smpp_gateway(8525) [INFO] [daemon-kit]: Running signal traps for INT
+2013-10-26 10:39:32.739053 smpp_gateway(8525) [INFO] [daemon-kit]: Running shutdown hooks
+2013-10-26 10:39:32.743146 smpp_gateway(8525) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2013-10-26 10:39:40.107812 smpp_gateway(8590) [INFO] [daemon-kit]: DaemonKit (0.2.3) booting in development mode
+2013-10-26 10:39:40.109015 smpp_gateway(8590) [INFO] [daemon-kit]: Setting up trap for USR1
+2013-10-26 10:39:40.109312 smpp_gateway(8590) [INFO] [daemon-kit]: Setting up trap for USR2
+2013-10-26 10:39:40.109569 smpp_gateway(8590) [INFO] [daemon-kit]: Setting up trap for HUP
+2013-10-26 10:39:40.109827 smpp_gateway(8590) [INFO] [daemon-kit]: Setting up trap for INT
+2013-10-26 10:39:40.110068 smpp_gateway(8590) [INFO] [daemon-kit]: Setting up trap for TERM
+2013-10-26 10:39:40.129545 smpp_gateway(8590) [DEBUG] channel_factory.rb:10: Author: Kernel::TurnosChannel initialized
+2013-10-26 10:39:40.130424 smpp_gateway(8590) [DEBUG] channel_factory.rb:10: Author: Kernel::TurnosChannel initialized
+2013-10-26 10:39:40.131188 smpp_gateway(8590) [DEBUG] channel_factory.rb:10: Author: Kernel::TurnosChannel initialized
+2013-10-26 10:39:40.134033 smpp_gateway(8590) [DEBUG] channel_factory.rb:10: Author: Kernel::BulkChannel initialized
+2013-10-26 10:39:40.134828 smpp_gateway(8590) [DEBUG] channel_factory.rb:10: Author: Kernel::BulkChannel initialized
+2013-10-26 10:39:40.138644 smpp_gateway(8590) [INFO] [daemon-kit]: DaemonKit (0.2.3) booted, now running smpp_gateway
+2013-10-26 10:39:40.144033 smpp_gateway(8590) [DEBUG] [daemon-kit]: AMQP.start({:user=>"guest", :pass=>"guest", :host=>"192.168.1.243", :vhost=>"/"})
+2013-10-26 10:47:51.308938 smpp_gateway(8590) [INFO] [daemon-kit]: Running signal traps for INT
+2013-10-26 10:47:51.309609 smpp_gateway(8590) [INFO] [daemon-kit]: Running shutdown hooks
+2013-10-26 10:47:51.309925 smpp_gateway(8590) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2013-10-26 10:47:59.36060 smpp_gateway(8839) [INFO] [daemon-kit]: DaemonKit (0.2.3) booting in development mode
+2013-10-26 10:47:59.37428 smpp_gateway(8839) [INFO] [daemon-kit]: Setting up trap for USR1
+2013-10-26 10:47:59.37740 smpp_gateway(8839) [INFO] [daemon-kit]: Setting up trap for USR2
+2013-10-26 10:47:59.37996 smpp_gateway(8839) [INFO] [daemon-kit]: Setting up trap for HUP
+2013-10-26 10:47:59.38259 smpp_gateway(8839) [INFO] [daemon-kit]: Setting up trap for INT
+2013-10-26 10:47:59.38503 smpp_gateway(8839) [INFO] [daemon-kit]: Setting up trap for TERM
+2013-10-26 10:47:59.54462 smpp_gateway(8839) [DEBUG] channel_factory.rb:10: Author: Kernel::TurnosChannel initialized
+2013-10-26 10:47:59.55329 smpp_gateway(8839) [DEBUG] channel_factory.rb:10: Author: Kernel::TurnosChannel initialized
+2013-10-26 10:47:59.56057 smpp_gateway(8839) [DEBUG] channel_factory.rb:10: Author: Kernel::TurnosChannel initialized
+2013-10-26 10:47:59.58778 smpp_gateway(8839) [DEBUG] channel_factory.rb:10: Author: Kernel::BulkChannel initialized
+2013-10-26 10:47:59.59694 smpp_gateway(8839) [DEBUG] channel_factory.rb:10: Author: Kernel::BulkChannel initialized
+2013-10-26 10:47:59.63645 smpp_gateway(8839) [INFO] [daemon-kit]: DaemonKit (0.2.3) booted, now running smpp_gateway
+2013-10-26 10:47:59.69586 smpp_gateway(8839) [DEBUG] [daemon-kit]: AMQP.start({:user=>"guest", :pass=>"guest", :host=>"192.168.1.243", :vhost=>"/"})

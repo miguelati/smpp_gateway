@@ -15,7 +15,7 @@
 defaults: &defaults
   user: guest
   pass: guest
-  host: localhost
+  host: 192.168.1.243
   vhost: /
 
 development:
