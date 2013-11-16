@@ -22,7 +22,7 @@ configuration:
       activemq_topic_sender: com.smpp_gateway.bulk.sender
       activemq_topic_receiver: com.smpp_gateway.bulk.receiver
       receiver_expression: '^(bulk|bul)'
-      short_number: 0971454545
+      short_number: 0972444000
       kannel_user: PERSONAL
       kannel_pass: abc12345
       kannel_url: http://localhost:13013/cgi-bin/sendsms

@@ -23,6 +23,7 @@ gem 'mongoid'
 gem 'activesupport', '3.1.12'
 gem 'rubysl-enumerator'
 gem 'rubysl-rexml'
+gem 'timers'
 
 group :development, :test do
   gem 'rake'

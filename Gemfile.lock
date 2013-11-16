@@ -84,3 +84,4 @@ DEPENDENCIES
   rubysl-enumerator
   rubysl-rexml
   safely
+  timers

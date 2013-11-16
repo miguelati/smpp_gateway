@@ -2,7 +2,7 @@ development:
   sessions:
     default:
       hosts:
-        - localhost:27017
+        - 127.0.0.1:27017
       database: smpp_gateway_development
       options:
         consistency: :eventual
@@ -11,7 +11,7 @@ test:
   sessions:
     default:
       hosts:
-        - localhost:27017
+        - 127.0.0.1:27017
       database: smpp_gateway_test
       options:
         consistency: :eventual
@@ -21,7 +21,7 @@ production:
   sessions:
     default:
       hosts:
-        - localhost:27017
+        - 127.0.0.1:27017
       database: smpp_gateway_production
       options:
         consistency: :eventual

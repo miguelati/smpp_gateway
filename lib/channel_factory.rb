@@ -1,3 +1,5 @@
+require 'timers'
+
 class ChannelFactory
   def self.create(channel_name)
     c = Class.new() do
@@ -8,6 +10,7 @@ class ChannelFactory
         @options = config
         @kannel = EM::Kannel.new(username: @options['kannel_user'], password: @options['kannel_pass'], url: @options['kannel_url'])
         DaemonKit.logger.debug "Author: #{self.class.to_s} initialized"
+        
       end
       
       def connect_queues
@@ -41,16 +44,9 @@ class ChannelFactory
             if response.success?
               Sender.create(from: @options['short_number'], to: msg['cellphone'], message: msg['message'], app: @options['name'].downcase, status: 'success')
             else
-              #if msg['tryed'].nil? || msg['tryed'] != true
-                #@timer = after(60 * 10){
-                #  msg['tryed'] = true
-                #  send_sms(msg)
-                #  @timer.reset
-                #  puts "entro"
-                #}
-                #else
+            
                 Sender.create(from: @options['short_number'], to: msg['cellphone'], message: msg['message'], app: @options['name'].downcase, status: 'failed')
-                #end
+             
             end
           end
         rescue Exception => e
