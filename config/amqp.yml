@@ -25,4 +25,7 @@ test:
   <<: *defaults
 
 production:
-  <<: *defaults
+  user: guest
+  pass: 3abbitMQ
+  host: 192.168.1.204
+  vhost: /

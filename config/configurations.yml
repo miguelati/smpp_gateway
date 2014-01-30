@@ -1,17 +1,22 @@
 configuration:
   version: 1.0
   name: smpp_gateway
+  delay_per_second: 8.0
+  time_to_retry: 10
   database:
     user: "test"
     passwod: "12345"
+  dlr_port: 9292
+  dlr_mask: 31
   channels:
     - 
       name: "Turnos"
       pool_size: 3
       activemq_topic_sender: com.smpp_gateway.turnos.sender
       activemq_topic_receiver: com.smpp_gateway.turnos.receiver
+      activemq_topic_response: com.smpp_gateway.turnos.response
       receiver_expression: '^(turno|turnos)'
-      short_number: 20800
+      short_number: 0972444000
       kannel_user: PERSONAL
       kannel_pass: abc12345
       kannel_url: http://localhost:13013/cgi-bin/sendsms
@@ -21,6 +26,7 @@ configuration:
       pool_size: 2
       activemq_topic_sender: com.smpp_gateway.bulk.sender
       activemq_topic_receiver: com.smpp_gateway.bulk.receiver
+      activemq_topic_response: com.smpp_gateway.bulk.response
       receiver_expression: '^(bulk|bul)'
       short_number: 0972444000
       kannel_user: PERSONAL

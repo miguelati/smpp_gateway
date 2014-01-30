@@ -1,0 +1,9 @@
+# Logfile created on 2014-01-27 15:16:12 -0300 by logger.rb/36483
+*** Below you'll find the most recent exception thrown, this will likely (but not certainly) be the exception that made your application exit abnormally ***
+#<NoMethodError: undefined method `run!' for #<Sinatra::Wrapper:0x007fb5d39acf50>>
+*** Below you'll find all the exception objects in memory, some of them may have been thrown in your application, others may just be in memory because they are standard exceptions ***
+#<IOError: stream closed>
+#<NoMemoryError: failed to allocate memory>
+#<SystemStackError: stack level too deep>
+#<#<Class:0x007fb5d10dc760>: exception reentered>
+#<NoMethodError: undefined method `run!' for #<Sinatra::Wrapper:0x007fb5d39acf50>>

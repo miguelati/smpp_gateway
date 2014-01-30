@@ -3,9 +3,14 @@
 require 'celluloid/autostart'
 require 'em-kannel'
 require 'json'
+require 'rack'
+require 'timers'
 
 #Rubinius::CodeLoader.require_compiled 'channel_factory'
 require 'channel_factory'
+require 'kannel_handler'
+
+$config = DaemonKit::Config.load('configurations')
 
 $supervisor = Celluloid::SupervisionGroup.run!
 

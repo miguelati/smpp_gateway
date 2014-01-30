@@ -21,9 +21,14 @@ gem "em-kannel"
 gem 'celluloid'
 gem 'mongoid'
 gem 'activesupport', '3.1.12'
-gem 'rubysl-enumerator'
-gem 'rubysl-rexml'
 gem 'timers'
+gem 'rack'
+gem "mongrel", "~> 1.2.0.pre2"
+gem 'god'
+#gem 'rubysl-enumerator'
+#gem 'rubysl-rexml'
+#gem 'rubysl'
+#gem 'thin'
 
 group :development, :test do
   gem 'rake'

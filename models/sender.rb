@@ -7,5 +7,8 @@ class Sender
   field :message, type: String
   field :status, type: String
   field :app, type: String
+  field :id_message, type: String
+  field :dlr_type, type: String
+  field :dlr_error, type: String
 
 end

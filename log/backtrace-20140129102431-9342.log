@@ -1,0 +1,11 @@
+# Logfile created on 2014-01-29 10:24:31 -0300 by logger.rb/36483
+*** Below you'll find the most recent exception thrown, this will likely (but not certainly) be the exception that made your application exit abnormally ***
+#<NoMethodError: undefined method `actors' for nil:NilClass>
+*** Below you'll find all the exception objects in memory, some of them may have been thrown in your application, others may just be in memory because they are standard exceptions ***
+#<IOError: stream closed>
+#<NoMemoryError: failed to allocate memory>
+#<SystemStackError: stack level too deep>
+#<#<Class:0x007fbb298dc750>: exception reentered>
+#<Errno::ECHILD: No child processes>
+#<EOFError: EOFError>
+#<NoMethodError: undefined method `actors' for nil:NilClass>

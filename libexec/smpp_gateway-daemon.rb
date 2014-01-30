@@ -1,15 +1,30 @@
 # Generated amqp daemon
-
 # Do your post daemonization configuration here
 # At minimum you need just the first line (without the block), or a lot
 # of strange things might start happening...
+
+
+$pid = fork do
+  require 'kannel_handler'
+  Signal.trap("HUP") { puts "Fork finnish"; exit}
+  $config = DaemonKit::Config.load('configurations')
+  
+  begin
+    Rack::Handler::Mongrel.run KannelHandler.new, :Port => $config['configuration']['dlr_port']
+  rescue Exception => e
+    puts e
+  end
+  
+end
+
 DaemonKit::Application.running! do |config|
   # Trap signals with blocks or procs
   config.trap( 'INT' ) do
     # do something clever
-    puts "termino!!"
+    Process.kill("HUP", $pid)
+    #puts "termino!!"
   end
-  config.trap( 'TERM', Proc.new { puts 'chau!' } )
+  #config.trap( 'TERM', Proc.new { puts 'chau!' } )
 end
 
 # IMPORTANT CONFIGURATION NOTE
@@ -35,6 +50,11 @@ DaemonKit::AMQP.run do |connection|
   # end
   
   $config['configuration']['channels'].size.times do |inx|
-    $supervisor.actors[inx].connect_queues
+    $supervisor.actors[inx].connect_queues(connection)
   end
+  #$supervisor.actors[$config['configuration']['channels'].size].process
+  
 end
+
+
+

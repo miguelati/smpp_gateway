@@ -1,0 +1,10 @@
+# Logfile created on 2014-01-25 16:16:36 -0300 by logger.rb/36483
+2014-01-25 16:16:36.702272 smpp_gateway(39383) [INFO] [daemon-kit]: DaemonKit (0.2.3) booting in production mode
+2014-01-25 16:16:36.702416 smpp_gateway(39383) [INFO] [daemon-kit]: Setting up trap for USR1
+2014-01-25 16:16:36.702514 smpp_gateway(39383) [INFO] [daemon-kit]: Setting up trap for USR2
+2014-01-25 16:16:36.702598 smpp_gateway(39383) [INFO] [daemon-kit]: Setting up trap for HUP
+2014-01-25 16:16:36.702686 smpp_gateway(39383) [INFO] [daemon-kit]: Setting up trap for INT
+2014-01-25 16:16:36.702769 smpp_gateway(39383) [INFO] [daemon-kit]: Setting up trap for TERM
+2014-01-25 16:16:36.818325 smpp_gateway(39383) [INFO] [daemon-kit]: DaemonKit (0.2.3) booted, now running smpp_gateway
+2014-01-25 16:16:41.663665 smpp_gateway(39383) [INFO] [daemon-kit]: Running shutdown hooks
+2014-01-25 16:16:41.663843 smpp_gateway(39383) [WARN] [daemon-kit]: Shutting down smpp_gateway

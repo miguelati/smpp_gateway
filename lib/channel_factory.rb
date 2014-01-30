@@ -1,5 +1,3 @@
-require 'timers'
-
 class ChannelFactory
   def self.create(channel_name)
     c = Class.new() do
@@ -10,27 +8,31 @@ class ChannelFactory
         @options = config
         @kannel = EM::Kannel.new(username: @options['kannel_user'], password: @options['kannel_pass'], url: @options['kannel_url'])
         DaemonKit.logger.debug "Author: #{self.class.to_s} initialized"
-        
       end
       
-      def connect_queues
-        @sender = AMQP::Channel.new
-        @sender.queue(@options['activemq_topic_sender'], auto_delete: true).subscribe do |msg|
-          process_message(msg)
+      def connect_queues(con)
+        @conection = con
+        @sender = AMQP::Channel.new(@conection)
+        queue = @sender.queue(@options['activemq_topic_sender'], :durable => true) 
+        queue.subscribe do |metadata, payload|
+          process_message(payload)
+        end
+        @sender.on_error do |ch, close|
+          puts "Error on channel: #{close.reply_text}, #{close.inspect}"
         end
       end
       
       def process_message(msg)
-        DaemonKit.logger.debug "Received message"
         begin
           msg_parsed = JSON.parse(msg)
           if msg_parsed['type'] == "1"
-            DaemonKit.logger.debug "Message type: 1"
+            DaemonKit.logger.debug " Received message type: 1"
             send_sms(msg_parsed['body']);
           elsif msg_parsed['type'] == "2"
-            DaemonKit.logger.debug "Message type: 2 with #{msg_parsed['body'].size} SMS"
+            DaemonKit.logger.debug "Received message type: 2 with #{msg_parsed['body'].size} SMS"
             msg_parsed['body'].each do |msg_to_send|
               send_sms(msg_to_send)
+              sleep(1.0/$config['configuration']['delay_per_second']) # Evita que se vayan más mensajes por segundo
             end
           end
         rescue Exception => e
@@ -38,22 +40,56 @@ class ChannelFactory
         end
       end
       
+      def response_ok(message)
+        
+        ch  = AMQP::Channel.new(@conection)
+        x   = ch.default_exchange
+        q   = ch.queue(@options['activemq_topic_response'], :durable => true)
+        
+        puts @options['activemq_topic_response']
+        
+        ch.on_error do |ch, close|
+          puts "Error on channel2: #{ch.inspect}, #{close.inspect}"
+        end
+        
+        x.publish "{\"id\": \"#{message['id']}\", \"status\": \"ACK_DAEMON\"}", :routing_key => q.name, :persistent => true do
+          puts "Response is ok!"
+        end
+        
+      end
+      
+      def prepare_dlr_url(app, msg_id)
+        "http://localhost:#{$config['configuration']['dlr_port']}/?type=%d&error=%A&id=#{msg_id}&app=#{app}"
+      end
+      
+      def insert_msg_to_storage(options, msg)
+        registro = Sender.create(from: @options['short_number'], to: msg['cellphone'], message: msg['message'], app: @options['name'], status: 'PENDING', id_message: msg['id'])
+        response_ok(msg)
+        registro
+      end
+      
+      def status_kannel_process(options, msg, dlr)
+        status = "RETRY1"
+        @kannel.send_sms(from: @options['short_number'], to: msg['cellphone'],body: msg['message'], 'dlr-mask' => $config['configuration']['dlr_port'], 'dlr-url' => CGI::escape(dlr)) do |response|
+          if response.success?
+            status = 'SUCCESS'
+          end
+        end
+        status
+      end
+      
       def send_sms(msg)
         begin
-          @kannel.send_sms(from: @options['short_number'], to: msg['cellphone'],body: msg['message']) do |response|
-            if response.success?
-              Sender.create(from: @options['short_number'], to: msg['cellphone'], message: msg['message'], app: @options['name'].downcase, status: 'success')
-            else
-            
-                Sender.create(from: @options['short_number'], to: msg['cellphone'], message: msg['message'], app: @options['name'].downcase, status: 'failed')
-             
-            end
-          end
+          registro = insert_msg_to_storage(@options, msg)
+          dlr = prepare_dlr_url(@options['name'].downcase, msg['id'])
+          registro.status = status_kannel_process(@options, msg, dlr)
+          registro.save
         rescue Exception => e
           puts e.inspect
         end
       end
     end
+    
     Kernel.const_set "#{channel_name.capitalize}Channel", c
   end
 end
