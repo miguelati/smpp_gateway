@@ -6,19 +6,15 @@ class ChannelFactory
       
       def initialize(config)
         @options = config
-        @kannel = EM::Kannel.new(username: @options['kannel_user'], password: @options['kannel_pass'], url: @options['kannel_url'])
         DaemonKit.logger.debug "Author: #{self.class.to_s} initialized"
       end
       
-      def connect_queues(con)
-        @conection = con
-        @sender = AMQP::Channel.new(@conection)
-        queue = @sender.queue(@options['activemq_topic_sender'], :durable => true) 
-        queue.subscribe do |metadata, payload|
+      def connect_queues(connection)
+        @connection = connection
+        
+        @helper = AmqpHelper.new(@connection)
+        @helper.subscribe(@options['activemq_topic_sender'], durable: true) do |metadata, payload|
           process_message(payload)
-        end
-        @sender.on_error do |ch, close|
-          puts "Error on channel: #{close.reply_text}, #{close.inspect}"
         end
       end
       
@@ -41,21 +37,9 @@ class ChannelFactory
       end
       
       def response_ok(message)
-        
-        ch  = AMQP::Channel.new(@conection)
-        x   = ch.default_exchange
-        q   = ch.queue(@options['activemq_topic_response'], :durable => true)
-        
-        puts @options['activemq_topic_response']
-        
-        ch.on_error do |ch, close|
-          puts "Error on channel2: #{ch.inspect}, #{close.inspect}"
-        end
-        
-        x.publish "{\"id\": \"#{message['id']}\", \"status\": \"ACK_DAEMON\"}", :routing_key => q.name, :persistent => true do
+        @helper.publish({id: message['id'], status: "ACK_DAEMON"}.to_json, :routing_key => @options['activemq_topic_response'], :persistent => true, :content_type => 'text/json') do |connection|
           puts "Response is ok!"
         end
-        
       end
       
       def prepare_dlr_url(app, msg_id)
@@ -69,19 +53,22 @@ class ChannelFactory
       end
       
       def status_kannel_process(options, msg, dlr)
-        status = "RETRY1"
-        @kannel.send_sms(from: @options['short_number'], to: msg['cellphone'],body: msg['message'], 'dlr-mask' => $config['configuration']['dlr_port'], 'dlr-url' => CGI::escape(dlr)) do |response|
+        status = "PENDING"
+        puts CGI::escape(dlr)
+        @kannel = EM::Kannel.new(username: @options['kannel_user'], password: @options['kannel_pass'], url: @options['kannel_url'], :dlr_mask => $config['configuration']['dlr_mask'], :dlr_callback_url => URI::escape(dlr))
+        @kannel.send_sms(from: @options['short_number'], to: msg['cellphone'],body: msg['message']) do |response|
           if response.success?
             status = 'SUCCESS'
           end
         end
+        @kannel = nil
         status
       end
       
       def send_sms(msg)
         begin
           registro = insert_msg_to_storage(@options, msg)
-          dlr = prepare_dlr_url(@options['name'].downcase, msg['id'])
+          dlr = prepare_dlr_url(@options['name'], msg['id'])
           registro.status = status_kannel_process(@options, msg, dlr)
           registro.save
         rescue Exception => e

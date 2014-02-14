@@ -8,6 +8,12 @@ configuration:
     passwod: "12345"
   dlr_port: 9292
   dlr_mask: 31
+  api_server:
+    users:
+      -
+        name: "bulk_user"
+        pass: "abc12345@@"
+    port: 8000
   channels:
     - 
       name: "Turnos"

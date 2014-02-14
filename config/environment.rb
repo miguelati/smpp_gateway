@@ -6,8 +6,8 @@ require 'mongoid'
 Dir["#{File.dirname(__FILE__)}/../models/*.rb"].each {|file| require file }
 
 # Uncomment below to force your daemon into production mode
-#ENV['DAEMON_ENV'] ||= 'production'
-ENV['DAEMON_ENV'] ||= 'development'
+ENV['DAEMON_ENV'] ||= 'production'
+#ENV['DAEMON_ENV'] ||= 'development'
 
 # Boot up
 require File.join(File.dirname(__FILE__), 'boot')
@@ -21,7 +21,7 @@ DaemonKit::Initializer.run do |config|
   config.daemon_name = 'smpp_gateway'
 
   # Force the daemon to be killed after X seconds from asking it to
-  config.force_kill_wait = 30
+  config.force_kill_wait = 100
 
   # Log backraces when a thread/daemon dies (Recommended)
   config.backtraces = true

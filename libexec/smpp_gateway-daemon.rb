@@ -2,10 +2,21 @@
 # Do your post daemonization configuration here
 # At minimum you need just the first line (without the block), or a lot
 # of strange things might start happening...
+DaemonKit::Application.running! do |config|
+  # Trap signals with blocks or procs
+  config.trap('INT') do
+    # do something clever
+    $pid.each { |pid| Process.kill('KILL', pid) }
+    #puts "termino!!"
+  end
+  config.trap( 'TERM', Proc.new { $pid.each {|pid| Process.kill('KILL', pid) } } )
+end
 
-
-$pid = fork do
+$pid = []
+#Receiver for kannel message
+$pid[0] = fork do
   require 'kannel_handler'
+  #Rubinius::CodeLoader.require_compiled 'kannel_handler'
   Signal.trap("HUP") { puts "Fork finnish"; exit}
   $config = DaemonKit::Config.load('configurations')
   
@@ -14,17 +25,34 @@ $pid = fork do
   rescue Exception => e
     puts e
   end
+end
+
+# Timer for tasks
+$pid[1] = fork do
+  require 'retry'
+  #Rubinius::CodeLoader.require_compiled 'retry'
+  Signal.trap("HUP") { puts "Fork finnish"; exit}
+  
+  DaemonKit::Cron.scheduler.every("1m") do
+    #DaemonKit.logger.debug "Scheduled task completed at #{Time.now}"
+  end
+  
+  DaemonKit::Cron.run
   
 end
 
-DaemonKit::Application.running! do |config|
-  # Trap signals with blocks or procs
-  config.trap( 'INT' ) do
-    # do something clever
-    Process.kill("HUP", $pid)
-    #puts "termino!!"
+# API Server
+$pid[2] = fork do
+  require 'api_server'
+  #Rubinius::CodeLoader.require_compiled 'api_server'
+  Signal.trap("HUP") { puts "Fork finnish"; exit}
+  $config = DaemonKit::Config.load('configurations')
+  
+  begin
+    Rack::Handler::Mongrel.run ApiServer.new, :Port => $config['configuration']['api_server']['port']
+  rescue Exception => e
+    puts e
   end
-  #config.trap( 'TERM', Proc.new { puts 'chau!' } )
 end
 
 # IMPORTANT CONFIGURATION NOTE

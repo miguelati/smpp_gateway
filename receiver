@@ -5,7 +5,8 @@ require 'date'
 require 'pp'
 require 'mongoid'
 require 'amqp'
-require 'mq'
+require 'uri'
+require 'cgi'
 
 #Rubinius::CodeLoader.require_compiled "#{File.dirname(__FILE__)}/lib/optparse_receiver"
 #Rubinius::CodeLoader.require_compiled "#{File.dirname(__FILE__)}/lib/receiver_inbox"
@@ -13,6 +14,7 @@ require 'mq'
 require "#{File.dirname(__FILE__)}/lib/optparse_receiver"
 require "#{File.dirname(__FILE__)}/lib/receiver_inbox"
 require "#{File.dirname(__FILE__)}/lib/commander"
+require "#{File.dirname(__FILE__)}/lib/amqp_helper"
 
 # %P => receiver(us)# %p => sender # %a => message %t => datetime %d => delivery_report_value %c message coding %u billing_information %D metadata
 

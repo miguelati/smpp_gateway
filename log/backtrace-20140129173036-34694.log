@@ -1,6 +1,0 @@
-# Logfile created on 2014-01-29 17:30:36 -0300 by logger.rb/v1.2.7
-*** Below you'll find the most recent exception thrown, this will likely (but not certainly) be the exception that made your application exit abnormally ***
-#<SystemExit: SystemExit>
-*** Below you'll find all the exception objects in memory, some of them may have been thrown in your application, others may just be in memory because they are standard exceptions ***
-#<SystemExit: SystemExit>
-#<RuntimeError: Command failed with status (1): [ god monitor smpp_gateway...]>

@@ -3,7 +3,7 @@
 
 $config = YAML::load(File.open("#{File.dirname(__FILE__)}/../config/configurations.yml"))
 $amq = YAML::load(File.open("#{File.dirname(__FILE__)}/../config/amqp.yml"))
-$amq = $amq['defaults'].inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
+$amq = $amq['production'].inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
 Mongoid.load!("#{File.dirname(__FILE__)}/../config/mongoid.yml", :production)
 
 Dir["#{File.dirname(__FILE__)}/../models/*.rb"].each {|file| require file }
@@ -17,25 +17,26 @@ class ReceiverInbox
     channel = $config['configuration']['channels'].find {|inner_hash| inner_hash["default"] == 1} if channel.nil?
     
     EventMachine.run do
-      
+      status = 'SUCCESS'
+      helper = AmqpHelper.new($amq)
       begin
-        connection = AMQP.connect($amq)
-
-        ch  = AMQP::Channel.new(connection)
-        q   = ch.queue(channel['activemq_topic_receiver'], :durable => true)
-        x   = ch.default_exchange
-
-        x.publish options.to_json, :routing_key => q.name, :persistent => true do
-          connection.close {
-            Receiver.create(from: options[:from], to: options[:to], message: options[:message], app: channel['name'].downcase, status: 'success', incoming_at: options[:incoming_at], delivery_report_value: options[:delivery_report], metadata_tlv: options[:metadata])
-            EventMachine.stop { exit }
-          }
+        
+        message = {}
+        message[:from] = URI.unescape(options[:from]).gsub(/^\+/, '')
+        message[:to] = URI.unescape(options[:to]).gsub(/^\+595/, '0')
+        message[:message] = CGI.unescape(options[:message])
+        message[:incoming_at] = CGI.unescape(options[:incoming_at].to_s)
+        
+        helper.publish(message.to_json, :routing_key => channel['activemq_topic_receiver'], :persistent => true, :content_type => 'text/json') do |connection|
+          EventMachine.stop { exit }
         end
       rescue
-        Receiver.create(from: options[:from], to: options[:to], message: options[:message], app: channel['name'].downcase, status: 'error', incoming_at: options[:incoming_at], delivery_report_value: options[:delivery_report], metadata_tlv: options[:metadata])
-        connection.close {
+        status = 'ERROR1'
+        helper.close_connection do
           EventMachine.stop { exit }
-        }
+        end
+      ensure
+        Receiver.create(from: message[:from], to: message[:to], message: message[:message], app: channel['name'].downcase, status: status, incoming_at: message[:incoming_at], delivery_report_value: options[:delivery_report], metadata_tlv: options[:metadata])
       end
     end
   end

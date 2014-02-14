@@ -3,6 +3,7 @@ class KannelHandler
   def call(env)    
     req = Rack::Request.new(env)
     puts "[kannel handler] Request params type => #{req.params['type']} | error => #{req.params['error']} | id => #{req.params['id']} | app => #{req.params['app']}"
+    Dlr.create(type: req.params['type'], error: req.params['error'], message_id: req.params['id'], app: req.params['app'])
     if params_is_ok?(req.params)
       process(req)
     else
@@ -14,11 +15,11 @@ class KannelHandler
     @sender_reg = Sender.where(id_message: req.params['id'], app: req.params['app']).first
     puts @sender_reg.inspect
     if @sender_reg != nil
-      if req.params['type'] == '1' || req.params['type'] == '8'
+      #if req.params['type'] == '1' || req.params['type'] == '8'
         status = "SUCCESS"
-      else
-          status = retry_correlation(@sender_reg.status)
-      end
+      #else
+      #    status = retry_correlation(@sender_reg.status)
+      #end
       update_status_in_store(status, req.params['type'], req.params['error'])
     
       [200, {"Content-Type" => "text/html"}, ["ACK"]]
@@ -65,35 +66,24 @@ class KannelHandler
   def send_to_amq(status, app, msg_id)
     puts "amq process"
     $amq = YAML::load(File.open("#{File.dirname(__FILE__)}/../config/amqp.yml"))
-    $amq = $amq['defaults'].inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
+    $amq = $amq[ENV['DAEMON_ENV']].inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
     channel = $config['configuration']['channels'].find {|inner_hash| inner_hash["name"] == app}
     
     if channel != ""
       EventMachine.run do
-      
+        helper = AmqpHelper.new($amq)
         begin
-          connection = AMQP.connect($amq)
-          ch  = AMQP::Channel.new(connection)
-          x   = ch.default_exchange
-          q   = ch.queue(channel['activemq_topic_response'], :durable => true)
-        
-          ch.on_error do |ch, close|
-            puts "[kannel handler] Error on response channel" #": #{ch.inspect}, #{close.inspect}"
-          end
-        
-          x.publish "{\"id\": \"#{msg_id}\", \"status\": \"#{convert_status(status)}\"}", :routing_key => q.name, :persistent => true do
-            puts "[kannel handler] published response on #{channel['activemq_topic_response']}!"
+          helper.publish({id: msg_id, status: convert_status(status)}.to_json, :routing_key => channel['activemq_topic_response'], :persistent => true, :content_type => 'text/json') do |connection|
             connection.close {
               EventMachine.stop { exit }
             }
           end
-          
         rescue
-          @sender_reg.status = "ERROR_RESPONSE"
-          @sender_reg.save
-          connection.close {
+          helper.close_connection do
+            @sender_reg.status = "ERROR_RESPONSE"
+            @sender_reg.save
             EventMachine.stop { exit }
-          }
+          end
         end
       end
       
