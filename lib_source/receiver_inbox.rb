@@ -1,12 +1,5 @@
 # to compile
 # rbx compile -s '^lib:lib-compiled' lib/
-$config = YAML::load(File.open("#{File.dirname(__FILE__)}/../config/configurations.yml"))
-$amq = YAML::load(File.open("#{File.dirname(__FILE__)}/../config/amqp.yml"))
-$amq = $amq['production'].inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
-Mongoid.load!("#{File.dirname(__FILE__)}/../config/mongoid.yml", :production)
-
-Dir["#{File.dirname(__FILE__)}/../models/*.rb"].each {|file| require file }
-
 class ReceiverInbox
   VERSION = 1.0
   def self.perform(args)

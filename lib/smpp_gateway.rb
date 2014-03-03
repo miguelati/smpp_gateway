@@ -5,16 +5,15 @@ require 'em-kannel'
 require 'json'
 require 'rack'
 require 'timers'
-require 'amqp_helper'
 require 'json'
 require 'pathname'
 require 'simple_router'
+require 'simple_router/dsl'
+require 'simple_router/routes'
 
-#Rubinius::CodeLoader.require_compiled 'channel_factory'
-require 'channel_factory'
-require 'kannel_handler'
-
-
+Rubinius::CodeLoader.require_compiled 'channel_factory'
+Rubinius::CodeLoader.require_compiled 'kannel_handler'
+Rubinius::CodeLoader.require_compiled 'amqp_helper'
 
 $supervisor = Celluloid::SupervisionGroup.run!
 

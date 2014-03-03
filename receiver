@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-#require 'benchmark'
+# ./receiver -f 0972444000 -t 0981460196 -m 'Test' -i 2014-03-01+10:30:20
 require 'optparse'
 require 'date'
 require 'pp'
@@ -8,13 +8,17 @@ require 'amqp'
 require 'uri'
 require 'cgi'
 
-#Rubinius::CodeLoader.require_compiled "#{File.dirname(__FILE__)}/lib/optparse_receiver"
-#Rubinius::CodeLoader.require_compiled "#{File.dirname(__FILE__)}/lib/receiver_inbox"
-#Rubinius::CodeLoader.require_compiled "#{File.dirname(__FILE__)}/lib/commander"
-require "#{File.dirname(__FILE__)}/lib/optparse_receiver"
-require "#{File.dirname(__FILE__)}/lib/receiver_inbox"
-require "#{File.dirname(__FILE__)}/lib/commander"
-require "#{File.dirname(__FILE__)}/lib/amqp_helper"
+Rubinius::CodeLoader.require_compiled "#{File.dirname(__FILE__)}/lib/optparse_receiver"
+Rubinius::CodeLoader.require_compiled "#{File.dirname(__FILE__)}/lib/receiver_inbox"
+Rubinius::CodeLoader.require_compiled "#{File.dirname(__FILE__)}/lib/commander"
+Rubinius::CodeLoader.require_compiled "#{File.dirname(__FILE__)}/lib/amqp_helper"
+
+$config = YAML::load(File.open("#{File.dirname(__FILE__)}/config/configurations.yml"))
+$amq = YAML::load(File.open("#{File.dirname(__FILE__)}/config/amqp.yml"))
+$amq = $amq['production'].inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
+Mongoid.load!("#{File.dirname(__FILE__)}/config/mongoid.yml", :production)
+
+Dir["#{File.dirname(__FILE__)}/models/*.rb"].each {|file| require file }
 
 # %P => receiver(us)# %p => sender # %a => message %t => datetime %d => delivery_report_value %c message coding %u billing_information %D metadata
 

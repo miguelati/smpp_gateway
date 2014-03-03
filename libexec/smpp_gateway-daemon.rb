@@ -15,8 +15,7 @@ end
 $pid = []
 #Receiver for kannel message
 $pid[0] = fork do
-  require 'kannel_handler'
-  #Rubinius::CodeLoader.require_compiled 'kannel_handler'
+  
   Signal.trap("HUP") { puts "Fork finnish"; exit}
   $config = DaemonKit::Config.load('configurations')
   
@@ -29,8 +28,7 @@ end
 
 # Timer for tasks
 $pid[1] = fork do
-  require 'retry'
-  #Rubinius::CodeLoader.require_compiled 'retry'
+  Rubinius::CodeLoader.require_compiled 'retry'
   Signal.trap("HUP") { puts "Fork finnish"; exit}
   
   DaemonKit::Cron.scheduler.every("1m") do
@@ -43,8 +41,7 @@ end
 
 # API Server
 $pid[2] = fork do
-  require 'api_server'
-  #Rubinius::CodeLoader.require_compiled 'api_server'
+  Rubinius::CodeLoader.require_compiled 'api_server'
   Signal.trap("HUP") { puts "Fork finnish"; exit}
   $config = DaemonKit::Config.load('configurations')
   
@@ -80,7 +77,6 @@ DaemonKit::AMQP.run do |connection|
   $config['configuration']['channels'].size.times do |inx|
     $supervisor.actors[inx].connect_queues(connection)
   end
-  #$supervisor.actors[$config['configuration']['channels'].size].process
   
 end
 
