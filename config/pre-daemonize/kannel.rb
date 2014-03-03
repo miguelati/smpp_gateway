@@ -1,0 +1,2 @@
+`#{$config['configuration']['kannel']['daemon_bearerbox']} -d #{$config['configuration']['kannel']['conf_file']}`
+`#{$config['configuration']['kannel']['daemon_smsbox']} -d #{$config['configuration']['kannel']['conf_file']}`
