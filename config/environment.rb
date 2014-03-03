@@ -6,14 +6,15 @@ require 'mongoid'
 Dir["#{File.dirname(__FILE__)}/../models/*.rb"].each {|file| require file }
 
 # Uncomment below to force your daemon into production mode
-ENV['DAEMON_ENV'] ||= 'production'
-#ENV['DAEMON_ENV'] ||= 'development'
+#ENV['DAEMON_ENV'] ||= 'production'
+ENV['DAEMON_ENV'] ||= 'development'
 
 # Boot up
 require File.join(File.dirname(__FILE__), 'boot')
 
 # Auto-require default libraries and those for the current ruby environment.
 Bundler.require :default, DaemonKit.env
+$config = DaemonKit::Config.load('configurations')
 
 DaemonKit::Initializer.run do |config|
 

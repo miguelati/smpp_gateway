@@ -14,7 +14,7 @@ require 'simple_router'
 require 'channel_factory'
 require 'kannel_handler'
 
-$config = DaemonKit::Config.load('configurations')
+
 
 $supervisor = Celluloid::SupervisionGroup.run!
 

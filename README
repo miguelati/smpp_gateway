@@ -9,12 +9,17 @@ Message to test (RabbitMQ Message)
 {"body":{"cellphone":"0981460196","message":"Test of bulk", "id": "123"},"type":"1"}
 {"body":{"message":"HOla llega el mensaje","cellphone":"0981714008"},"type":"1"}
 {"body":[
-  {"cellphone":"0981460196","message":"Test of bulk"},
-  {"cellphone":"0981460196","message":"Test of bulk"},
-  {"cellphone":"0981460196","message":"Test of bulk"},
-  {"cellphone":"0981460196","message":"Test of bulk"},
-  {"cellphone":"0981460196","message":"Test of bulk"},
-  {"cellphone":"0981460196","message":"Test of bulk"}
+  {"cellphone":"0981460196","message":"Respondan ok este mensaje cuando reciban por favor. Gracias"},
+    {"cellphone":"0971222540","message":"Respondan ok este mensaje cuando reciban por favor. Gracias"},
+    {"cellphone":"0985300043","message":"Respondan ok este mensaje cuando reciban por favor. Gracias"},
+    {"cellphone":"0981714008","message":"Respondan ok este mensaje cuando reciban por favor. Gracias"},
+    {"cellphone":"0971303196","message":"Respondan ok este mensaje cuando reciban por favor. Gracias"},
+    {"cellphone":"0981495681","message":"Respondan ok este mensaje cuando reciban por favor. Gracias"},
+    {"cellphone":"0971717273","message":"Respondan ok este mensaje cuando reciban por favor. Gracias"},
+    {"cellphone":"0971443227","message":"Respondan ok este mensaje cuando reciban por favor. Gracias"},
+    {"cellphone":"0971856056","message":"Respondan ok este mensaje cuando reciban por favor. Gracias"},
+    {"cellphone":"0982192051","message":"Respondan ok este mensaje cuando reciban por favor. Gracias"},
+    {"cellphone":"0971789293","message":"Respondan ok este mensaje cuando reciban por favor. Gracias"}
 ],"type":"2"}
 
 Directories

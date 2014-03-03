@@ -49,7 +49,7 @@ $pid[2] = fork do
   $config = DaemonKit::Config.load('configurations')
   
   begin
-    Rack::Handler::Mongrel.run ApiServer.new, :Port => $config['configuration']['api_server']['port']
+    Rack::Handler::Mongrel.run ApiServer.new, :Port => $config['configuration']['api_server_port']
   rescue Exception => e
     puts e
   end

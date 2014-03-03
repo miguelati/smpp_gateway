@@ -10,4 +10,4 @@
 # Safely::Strategy::Hoptoad.hoptoad_key = ""
 
 # Comment out to use email exceptions
-# Safely::Strategy::Mail.recipient = "your.name@gmail.com"
+Safely::Strategy::Mail.recipient = "miguelgodoyg@gmail.com"
