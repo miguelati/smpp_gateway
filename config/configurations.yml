@@ -1,7 +1,7 @@
 configuration:
   version: 1.0
   name: smpp_gateway
-  test_sms: 
+  test_sms:
     -
       enabled: true
       port: 9393

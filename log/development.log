@@ -752,3 +752,239 @@
 2014-03-03 00:14:22.904711 smpp_gateway(38808) [INFO] [daemon-kit]: Running signal traps for INT
 2014-03-03 00:14:22.905662 smpp_gateway(38798) [INFO] [daemon-kit]: Running shutdown hooks
 2014-03-03 00:14:22.906149 smpp_gateway(38798) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-20 23:56:06.733534 smpp_gateway(96945) [INFO] [daemon-kit]: DaemonKit (0.2.3) booting in development mode
+2014-07-20 23:56:06.734409 smpp_gateway(96945) [INFO] [daemon-kit]: Setting up trap for USR1
+2014-07-20 23:56:06.734656 smpp_gateway(96945) [INFO] [daemon-kit]: Setting up trap for USR2
+2014-07-20 23:56:06.734859 smpp_gateway(96945) [INFO] [daemon-kit]: Setting up trap for HUP
+2014-07-20 23:56:06.735045 smpp_gateway(96945) [INFO] [daemon-kit]: Setting up trap for INT
+2014-07-20 23:56:06.735215 smpp_gateway(96945) [INFO] [daemon-kit]: Setting up trap for TERM
+2014-07-20 23:56:06.761569 smpp_gateway(96945) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-20 23:56:06.761756 smpp_gateway(96945) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-20 23:56:43.250231 smpp_gateway(97038) [INFO] [daemon-kit]: DaemonKit (0.2.3) booting in development mode
+2014-07-20 23:56:43.251005 smpp_gateway(97038) [INFO] [daemon-kit]: Setting up trap for USR1
+2014-07-20 23:56:43.251190 smpp_gateway(97038) [INFO] [daemon-kit]: Setting up trap for USR2
+2014-07-20 23:56:43.251329 smpp_gateway(97038) [INFO] [daemon-kit]: Setting up trap for HUP
+2014-07-20 23:56:43.251496 smpp_gateway(97038) [INFO] [daemon-kit]: Setting up trap for INT
+2014-07-20 23:56:43.251628 smpp_gateway(97038) [INFO] [daemon-kit]: Setting up trap for TERM
+2014-07-20 23:56:43.267051 smpp_gateway(97038) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-20 23:56:43.267235 smpp_gateway(97038) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-21 00:00:31.148476 smpp_gateway(97433) [INFO] [daemon-kit]: DaemonKit (0.2.3) booting in development mode
+2014-07-21 00:00:31.149611 smpp_gateway(97433) [INFO] [daemon-kit]: Setting up trap for USR1
+2014-07-21 00:00:31.149885 smpp_gateway(97433) [INFO] [daemon-kit]: Setting up trap for USR2
+2014-07-21 00:00:31.150071 smpp_gateway(97433) [INFO] [daemon-kit]: Setting up trap for HUP
+2014-07-21 00:00:31.150249 smpp_gateway(97433) [INFO] [daemon-kit]: Setting up trap for INT
+2014-07-21 00:00:31.150403 smpp_gateway(97433) [INFO] [daemon-kit]: Setting up trap for TERM
+2014-07-21 00:00:31.170213 smpp_gateway(97433) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-21 00:00:31.170401 smpp_gateway(97433) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-21 00:03:56.900891 smpp_gateway(98080) [INFO] [daemon-kit]: DaemonKit (0.2.3) booting in development mode
+2014-07-21 00:03:56.901681 smpp_gateway(98080) [INFO] [daemon-kit]: Setting up trap for USR1
+2014-07-21 00:03:56.901871 smpp_gateway(98080) [INFO] [daemon-kit]: Setting up trap for USR2
+2014-07-21 00:03:56.902013 smpp_gateway(98080) [INFO] [daemon-kit]: Setting up trap for HUP
+2014-07-21 00:03:56.902166 smpp_gateway(98080) [INFO] [daemon-kit]: Setting up trap for INT
+2014-07-21 00:03:56.902312 smpp_gateway(98080) [INFO] [daemon-kit]: Setting up trap for TERM
+2014-07-21 00:03:56.929853 smpp_gateway(98080) [INFO] [daemon-kit]: DaemonKit (0.2.3) booted, now running smpp_gateway
+2014-07-21 00:03:56.956503 smpp_gateway(98080) [DEBUG] [daemon-kit]: AMQP.start({:user=>"guest", :pass=>"guest", :host=>"localhost", :vhost=>"/"})
+2014-07-21 00:03:56.968084 smpp_gateway(98092) [INFO] [daemon-kit]: Starting rufus-scheduler
+2014-07-21 00:05:39.397945 smpp_gateway(98080) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-21 00:05:39.398472 smpp_gateway(98080) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-21 00:05:39.398682 smpp_gateway(98080) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-25 08:39:52.898995 smpp_gateway(44938) [INFO] [daemon-kit]: DaemonKit (0.2.3) booting in development mode
+2014-07-25 08:39:52.900627 smpp_gateway(44938) [INFO] [daemon-kit]: Setting up trap for USR1
+2014-07-25 08:39:52.900902 smpp_gateway(44938) [INFO] [daemon-kit]: Setting up trap for USR2
+2014-07-25 08:39:52.901081 smpp_gateway(44938) [INFO] [daemon-kit]: Setting up trap for HUP
+2014-07-25 08:39:52.901263 smpp_gateway(44938) [INFO] [daemon-kit]: Setting up trap for INT
+2014-07-25 08:39:52.901425 smpp_gateway(44938) [INFO] [daemon-kit]: Setting up trap for TERM
+2014-07-25 08:39:52.933517 smpp_gateway(44938) [INFO] [daemon-kit]: DaemonKit (0.2.3) booted, now running smpp_gateway
+2014-07-25 08:39:52.943457 smpp_gateway(44938) [DEBUG] [daemon-kit]: AMQP.start({:user=>"guest", :pass=>"guest", :host=>"localhost", :vhost=>"/"})
+2014-07-25 08:39:52.946264 smpp_gateway(44945) [INFO] [daemon-kit]: Starting rufus-scheduler
+2014-07-25 08:39:55.726890 smpp_gateway(44938) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-25 08:39:55.727100 smpp_gateway(44938) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-25 08:41:26.358031 smpp_gateway(45720) [INFO] [daemon-kit]: DaemonKit (0.2.3) booting in development mode
+2014-07-25 08:41:26.358797 smpp_gateway(45720) [INFO] [daemon-kit]: Setting up trap for USR1
+2014-07-25 08:41:26.358972 smpp_gateway(45720) [INFO] [daemon-kit]: Setting up trap for USR2
+2014-07-25 08:41:26.359097 smpp_gateway(45720) [INFO] [daemon-kit]: Setting up trap for HUP
+2014-07-25 08:41:26.359229 smpp_gateway(45720) [INFO] [daemon-kit]: Setting up trap for INT
+2014-07-25 08:41:26.359345 smpp_gateway(45720) [INFO] [daemon-kit]: Setting up trap for TERM
+2014-07-25 08:41:26.385170 smpp_gateway(45720) [INFO] [daemon-kit]: DaemonKit (0.2.3) booted, now running smpp_gateway
+2014-07-25 08:41:26.417296 smpp_gateway(45731) [INFO] [daemon-kit]: Starting rufus-scheduler
+2014-07-25 08:41:26.432555 smpp_gateway(45720) [DEBUG] [daemon-kit]: AMQP.start({:user=>"guest", :pass=>"guest", :host=>"localhost", :vhost=>"/"})
+2014-07-25 08:41:26.434092 smpp_gateway(45730) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-25 08:41:26.434700 smpp_gateway(45730) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-25 08:41:26.454507 smpp_gateway(45732) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-25 08:41:26.454980 smpp_gateway(45732) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-25 08:42:56.141141 smpp_gateway(45720) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 08:42:56.141190 smpp_gateway(45731) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 08:42:56.141219 smpp_gateway(45732) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 08:42:56.141188 smpp_gateway(45730) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 08:42:56.141768 smpp_gateway(45720) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-25 08:42:56.142096 smpp_gateway(45720) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-25 08:43:02.49812 smpp_gateway(45876) [INFO] [daemon-kit]: DaemonKit (0.2.3) booting in development mode
+2014-07-25 08:43:02.50575 smpp_gateway(45876) [INFO] [daemon-kit]: Setting up trap for USR1
+2014-07-25 08:43:02.50747 smpp_gateway(45876) [INFO] [daemon-kit]: Setting up trap for USR2
+2014-07-25 08:43:02.50875 smpp_gateway(45876) [INFO] [daemon-kit]: Setting up trap for HUP
+2014-07-25 08:43:02.51021 smpp_gateway(45876) [INFO] [daemon-kit]: Setting up trap for INT
+2014-07-25 08:43:02.51152 smpp_gateway(45876) [INFO] [daemon-kit]: Setting up trap for TERM
+2014-07-25 08:43:02.74824 smpp_gateway(45876) [INFO] [daemon-kit]: DaemonKit (0.2.3) booted, now running smpp_gateway
+2014-07-25 08:43:02.116146 smpp_gateway(45886) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-25 08:43:02.116426 smpp_gateway(45886) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-25 08:43:02.157352 smpp_gateway(45887) [INFO] [daemon-kit]: Starting rufus-scheduler
+2014-07-25 08:43:02.159554 smpp_gateway(45876) [DEBUG] [daemon-kit]: AMQP.start({:user=>"guest", :pass=>"guest", :host=>"localhost", :vhost=>"/"})
+2014-07-25 08:43:02.198434 smpp_gateway(45888) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-25 08:43:02.198750 smpp_gateway(45888) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-25 08:44:42.610251 smpp_gateway(45876) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 08:44:42.610205 smpp_gateway(45887) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 08:44:42.610205 smpp_gateway(45886) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 08:44:42.610250 smpp_gateway(45888) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 08:44:42.610937 smpp_gateway(45876) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-25 08:44:42.611141 smpp_gateway(45876) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-25 08:44:48.173181 smpp_gateway(46086) [INFO] [daemon-kit]: DaemonKit (0.2.3) booting in development mode
+2014-07-25 08:44:48.173883 smpp_gateway(46086) [INFO] [daemon-kit]: Setting up trap for USR1
+2014-07-25 08:44:48.174045 smpp_gateway(46086) [INFO] [daemon-kit]: Setting up trap for USR2
+2014-07-25 08:44:48.174183 smpp_gateway(46086) [INFO] [daemon-kit]: Setting up trap for HUP
+2014-07-25 08:44:48.174323 smpp_gateway(46086) [INFO] [daemon-kit]: Setting up trap for INT
+2014-07-25 08:44:48.174451 smpp_gateway(46086) [INFO] [daemon-kit]: Setting up trap for TERM
+2014-07-25 08:44:48.198142 smpp_gateway(46086) [INFO] [daemon-kit]: DaemonKit (0.2.3) booted, now running smpp_gateway
+2014-07-25 08:44:48.274233 smpp_gateway(46099) [INFO] [daemon-kit]: Starting rufus-scheduler
+2014-07-25 08:44:48.278719 smpp_gateway(46098) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-25 08:44:48.279155 smpp_gateway(46098) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-25 08:44:48.299461 smpp_gateway(46086) [DEBUG] [daemon-kit]: AMQP.start({:user=>"guest", :pass=>"guest", :host=>"localhost", :vhost=>"/"})
+2014-07-25 08:44:48.321879 smpp_gateway(46100) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-25 08:44:48.322207 smpp_gateway(46100) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-25 08:45:48.548797 smpp_gateway(46099) [DEBUG] smpp_gateway-daemon.rb:35: Scheduled task completed at 2014-07-25 08:45:48 -0400
+2014-07-25 08:46:48.487786 smpp_gateway(46099) [DEBUG] smpp_gateway-daemon.rb:35: Scheduled task completed at 2014-07-25 08:46:48 -0400
+2014-07-25 08:47:15.194449 smpp_gateway(46086) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 08:47:15.194369 smpp_gateway(46099) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 08:47:15.194440 smpp_gateway(46098) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 08:47:15.194467 smpp_gateway(46100) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 08:47:15.195163 smpp_gateway(46086) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-25 08:47:15.195464 smpp_gateway(46086) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-25 08:47:42.840752 smpp_gateway(46316) [INFO] [daemon-kit]: DaemonKit (0.2.3) booting in development mode
+2014-07-25 08:47:42.841494 smpp_gateway(46316) [INFO] [daemon-kit]: Setting up trap for USR1
+2014-07-25 08:47:42.841660 smpp_gateway(46316) [INFO] [daemon-kit]: Setting up trap for USR2
+2014-07-25 08:47:42.841800 smpp_gateway(46316) [INFO] [daemon-kit]: Setting up trap for HUP
+2014-07-25 08:47:42.841944 smpp_gateway(46316) [INFO] [daemon-kit]: Setting up trap for INT
+2014-07-25 08:47:42.842076 smpp_gateway(46316) [INFO] [daemon-kit]: Setting up trap for TERM
+2014-07-25 08:47:42.865890 smpp_gateway(46316) [INFO] [daemon-kit]: DaemonKit (0.2.3) booted, now running smpp_gateway
+2014-07-25 08:47:42.922823 smpp_gateway(46327) [INFO] [daemon-kit]: Starting rufus-scheduler
+2014-07-25 08:47:42.934253 smpp_gateway(46326) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-25 08:47:42.934712 smpp_gateway(46326) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-25 08:47:42.939482 smpp_gateway(46316) [DEBUG] [daemon-kit]: AMQP.start({:user=>"guest", :pass=>"guest", :host=>"localhost", :vhost=>"/"})
+2014-07-25 08:47:42.960751 smpp_gateway(46328) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-25 08:47:42.961087 smpp_gateway(46328) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-25 08:47:46.671639 smpp_gateway(46316) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 08:47:46.671611 smpp_gateway(46328) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 08:47:46.671711 smpp_gateway(46326) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 08:47:46.671612 smpp_gateway(46327) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 08:47:46.672206 smpp_gateway(46316) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-25 08:47:46.672415 smpp_gateway(46316) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-25 08:48:06.220187 smpp_gateway(46406) [INFO] [daemon-kit]: DaemonKit (0.2.3) booting in development mode
+2014-07-25 08:48:06.220944 smpp_gateway(46406) [INFO] [daemon-kit]: Setting up trap for USR1
+2014-07-25 08:48:06.221126 smpp_gateway(46406) [INFO] [daemon-kit]: Setting up trap for USR2
+2014-07-25 08:48:06.221262 smpp_gateway(46406) [INFO] [daemon-kit]: Setting up trap for HUP
+2014-07-25 08:48:06.221426 smpp_gateway(46406) [INFO] [daemon-kit]: Setting up trap for INT
+2014-07-25 08:48:06.221553 smpp_gateway(46406) [INFO] [daemon-kit]: Setting up trap for TERM
+2014-07-25 08:48:06.249165 smpp_gateway(46406) [INFO] [daemon-kit]: DaemonKit (0.2.3) booted, now running smpp_gateway
+2014-07-25 08:48:06.289256 smpp_gateway(46416) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-25 08:48:06.289760 smpp_gateway(46416) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-25 08:48:06.293344 smpp_gateway(46417) [INFO] [daemon-kit]: Starting rufus-scheduler
+2014-07-25 08:48:06.368028 smpp_gateway(46406) [DEBUG] [daemon-kit]: AMQP.start({:user=>"guest", :pass=>"guest", :host=>"localhost", :vhost=>"/"})
+2014-07-25 08:48:06.395342 smpp_gateway(46418) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-25 08:48:06.395956 smpp_gateway(46418) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-25 08:52:19.395582 smpp_gateway(46406) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 08:52:19.395647 smpp_gateway(46417) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 08:52:19.395679 smpp_gateway(46418) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 08:52:19.395701 smpp_gateway(46416) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 08:52:19.396529 smpp_gateway(46406) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-25 08:52:19.396872 smpp_gateway(46406) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-25 08:53:20.870692 smpp_gateway(46860) [INFO] [daemon-kit]: DaemonKit (0.2.3) booting in development mode
+2014-07-25 08:53:20.871384 smpp_gateway(46860) [INFO] [daemon-kit]: Setting up trap for USR1
+2014-07-25 08:53:20.871545 smpp_gateway(46860) [INFO] [daemon-kit]: Setting up trap for USR2
+2014-07-25 08:53:20.871684 smpp_gateway(46860) [INFO] [daemon-kit]: Setting up trap for HUP
+2014-07-25 08:53:20.871829 smpp_gateway(46860) [INFO] [daemon-kit]: Setting up trap for INT
+2014-07-25 08:53:20.871960 smpp_gateway(46860) [INFO] [daemon-kit]: Setting up trap for TERM
+2014-07-25 08:53:20.895763 smpp_gateway(46860) [INFO] [daemon-kit]: DaemonKit (0.2.3) booted, now running smpp_gateway
+2014-07-25 08:53:20.955583 smpp_gateway(46873) [INFO] [daemon-kit]: Starting rufus-scheduler
+2014-07-25 08:53:20.960227 smpp_gateway(46872) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-25 08:53:20.960503 smpp_gateway(46872) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-25 08:53:20.977049 smpp_gateway(46860) [DEBUG] [daemon-kit]: AMQP.start({:user=>"guest", :pass=>"guest", :host=>"localhost", :vhost=>"/"})
+2014-07-25 08:53:20.998337 smpp_gateway(46874) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-25 08:53:20.998619 smpp_gateway(46874) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-25 08:56:30.901081 smpp_gateway(46860) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 08:56:30.901019 smpp_gateway(46873) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 08:56:30.901039 smpp_gateway(46872) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 08:56:30.901114 smpp_gateway(46874) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 08:56:30.901918 smpp_gateway(46860) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-25 08:56:30.902240 smpp_gateway(46860) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-25 08:57:40.452491 smpp_gateway(47241) [INFO] [daemon-kit]: DaemonKit (0.2.3) booting in development mode
+2014-07-25 08:57:40.453176 smpp_gateway(47241) [INFO] [daemon-kit]: Setting up trap for USR1
+2014-07-25 08:57:40.453348 smpp_gateway(47241) [INFO] [daemon-kit]: Setting up trap for USR2
+2014-07-25 08:57:40.453479 smpp_gateway(47241) [INFO] [daemon-kit]: Setting up trap for HUP
+2014-07-25 08:57:40.453621 smpp_gateway(47241) [INFO] [daemon-kit]: Setting up trap for INT
+2014-07-25 08:57:40.453751 smpp_gateway(47241) [INFO] [daemon-kit]: Setting up trap for TERM
+2014-07-25 08:57:40.481367 smpp_gateway(47241) [INFO] [daemon-kit]: DaemonKit (0.2.3) booted, now running smpp_gateway
+2014-07-25 08:57:40.534221 smpp_gateway(47254) [INFO] [daemon-kit]: Starting rufus-scheduler
+2014-07-25 08:57:40.546217 smpp_gateway(47253) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-25 08:57:40.546667 smpp_gateway(47253) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-25 08:57:40.557653 smpp_gateway(47241) [DEBUG] [daemon-kit]: AMQP.start({:user=>"guest", :pass=>"guest", :host=>"localhost", :vhost=>"/"})
+2014-07-25 08:57:40.581184 smpp_gateway(47255) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-25 08:57:40.581828 smpp_gateway(47255) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-25 09:04:28.172009 smpp_gateway(47241) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 09:04:28.171987 smpp_gateway(47254) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 09:04:28.172048 smpp_gateway(47255) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 09:04:28.172129 smpp_gateway(47253) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 09:04:28.172598 smpp_gateway(47241) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-25 09:04:28.172908 smpp_gateway(47241) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-25 09:09:45.893864 smpp_gateway(48166) [INFO] [daemon-kit]: DaemonKit (0.2.3) booting in development mode
+2014-07-25 09:09:45.894620 smpp_gateway(48166) [INFO] [daemon-kit]: Setting up trap for USR1
+2014-07-25 09:09:45.894793 smpp_gateway(48166) [INFO] [daemon-kit]: Setting up trap for USR2
+2014-07-25 09:09:45.894923 smpp_gateway(48166) [INFO] [daemon-kit]: Setting up trap for HUP
+2014-07-25 09:09:45.895067 smpp_gateway(48166) [INFO] [daemon-kit]: Setting up trap for INT
+2014-07-25 09:09:45.895197 smpp_gateway(48166) [INFO] [daemon-kit]: Setting up trap for TERM
+2014-07-25 09:09:45.918535 smpp_gateway(48166) [INFO] [daemon-kit]: DaemonKit (0.2.3) booted, now running smpp_gateway
+2014-07-25 09:09:45.956624 smpp_gateway(48174) [INFO] [daemon-kit]: Starting rufus-scheduler
+2014-07-25 09:09:45.978953 smpp_gateway(48173) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-25 09:09:45.979233 smpp_gateway(48173) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-25 09:09:45.989219 smpp_gateway(48166) [DEBUG] [daemon-kit]: AMQP.start({:user=>"guest", :pass=>"guest", :host=>"localhost", :vhost=>"/"})
+2014-07-25 09:09:46.31051 smpp_gateway(48175) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-25 09:09:46.31456 smpp_gateway(48175) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-25 09:19:00.240816 smpp_gateway(48166) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 09:19:00.240832 smpp_gateway(48174) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 09:19:00.240864 smpp_gateway(48173) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 09:19:00.240884 smpp_gateway(48175) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 09:19:00.241604 smpp_gateway(48166) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-25 09:19:00.241895 smpp_gateway(48166) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-25 09:19:39.705959 smpp_gateway(49345) [INFO] [daemon-kit]: DaemonKit (0.2.3) booting in development mode
+2014-07-25 09:19:39.706707 smpp_gateway(49345) [INFO] [daemon-kit]: Setting up trap for USR1
+2014-07-25 09:19:39.706875 smpp_gateway(49345) [INFO] [daemon-kit]: Setting up trap for USR2
+2014-07-25 09:19:39.707003 smpp_gateway(49345) [INFO] [daemon-kit]: Setting up trap for HUP
+2014-07-25 09:19:39.707146 smpp_gateway(49345) [INFO] [daemon-kit]: Setting up trap for INT
+2014-07-25 09:19:39.707275 smpp_gateway(49345) [INFO] [daemon-kit]: Setting up trap for TERM
+2014-07-25 09:19:39.734705 smpp_gateway(49345) [INFO] [daemon-kit]: DaemonKit (0.2.3) booted, now running smpp_gateway
+2014-07-25 09:19:39.761026 smpp_gateway(49353) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-25 09:19:39.761475 smpp_gateway(49353) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-25 09:19:39.821543 smpp_gateway(49345) [DEBUG] [daemon-kit]: AMQP.start({:user=>"guest", :pass=>"guest", :host=>"localhost", :vhost=>"/"})
+2014-07-25 09:19:39.823624 smpp_gateway(49354) [INFO] [daemon-kit]: Starting rufus-scheduler
+2014-07-25 09:19:39.841027 smpp_gateway(49355) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-25 09:19:39.841576 smpp_gateway(49355) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-25 09:21:01.302272 smpp_gateway(49345) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 09:21:01.302257 smpp_gateway(49354) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 09:21:01.302293 smpp_gateway(49353) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 09:21:01.302284 smpp_gateway(49355) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 09:21:01.302818 smpp_gateway(49345) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-25 09:21:01.303011 smpp_gateway(49345) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-25 11:04:50.184615 smpp_gateway(56442) [INFO] [daemon-kit]: DaemonKit (0.2.3) booting in development mode
+2014-07-25 11:04:50.185376 smpp_gateway(56442) [INFO] [daemon-kit]: Setting up trap for USR1
+2014-07-25 11:04:50.185582 smpp_gateway(56442) [INFO] [daemon-kit]: Setting up trap for USR2
+2014-07-25 11:04:50.185723 smpp_gateway(56442) [INFO] [daemon-kit]: Setting up trap for HUP
+2014-07-25 11:04:50.185874 smpp_gateway(56442) [INFO] [daemon-kit]: Setting up trap for INT
+2014-07-25 11:04:50.185993 smpp_gateway(56442) [INFO] [daemon-kit]: Setting up trap for TERM
+2014-07-25 11:04:50.213452 smpp_gateway(56442) [INFO] [daemon-kit]: DaemonKit (0.2.3) booted, now running smpp_gateway
+2014-07-25 11:04:50.249333 smpp_gateway(56442) [DEBUG] [daemon-kit]: AMQP.start({:user=>"guest", :pass=>"guest", :host=>"localhost", :vhost=>"/"})
+2014-07-25 11:04:50.252301 smpp_gateway(56453) [INFO] [daemon-kit]: Starting rufus-scheduler
+2014-07-25 11:04:50.273568 smpp_gateway(56452) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-25 11:04:50.273991 smpp_gateway(56452) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-25 11:04:50.278818 smpp_gateway(56454) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-25 11:04:50.279099 smpp_gateway(56454) [WARN] [daemon-kit]: Shutting down smpp_gateway
+2014-07-25 11:05:59.800657 smpp_gateway(56442) [INFO] [daemon-kit]: Running signal traps for INT
+2014-07-25 11:05:59.801366 smpp_gateway(56442) [INFO] [daemon-kit]: Running shutdown hooks
+2014-07-25 11:05:59.801648 smpp_gateway(56442) [WARN] [daemon-kit]: Shutting down smpp_gateway

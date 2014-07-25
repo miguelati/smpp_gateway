@@ -3,7 +3,7 @@ development:
     default:
       hosts:
         - 127.0.0.1:27017
-      database: smpp_gateway_development
+      database: smpp_gateway_production
       options:
         consistency: :eventual
 

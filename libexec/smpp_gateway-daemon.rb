@@ -33,6 +33,7 @@ $pid[1] = fork do
   
   DaemonKit::Cron.scheduler.every("1m") do
     #DaemonKit.logger.debug "Scheduled task completed at #{Time.now}"
+    Retry.find_sms_enqueued
   end
   
   DaemonKit::Cron.run

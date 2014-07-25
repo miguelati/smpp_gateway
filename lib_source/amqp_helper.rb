@@ -4,6 +4,7 @@ class AmqpHelper
     @channel = AMQP::Channel.new(@connection)
   end
   
+  
   def set_connection(connection)
     if connection.class.to_s == "AMQP::Session"
       connection

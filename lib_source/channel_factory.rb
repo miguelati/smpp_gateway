@@ -21,7 +21,7 @@ class ChannelFactory
       def process_message(msg)
         begin
           msg_parsed = JSON.parse(msg)
-          if msg_parsed['type'] == "1"
+          if msg_parsed['type'] == "1" && ((!msg_parsed['expire_in'].nil? && DateTime.parse(msg_parsed['expire_in']) > DateTime.now) || msg_parsed['expire_in'].nil?)
             DaemonKit.logger.debug " Received message type: 1"
             send_sms(msg_parsed['body']);
           elsif msg_parsed['type'] == "2"
@@ -59,12 +59,14 @@ class ChannelFactory
       def status_kannel_process(options, msg, dlr)
         status = "PENDING"
         @kannel = EM::Kannel.new(username: @options['kannel_user'], password: @options['kannel_pass'], url: @options['kannel_url'], :dlr_mask => $config['configuration']['dlr_mask'], :dlr_callback_url => dlr)
-        @kannel.send_sms(from: @options['short_number'], to: msg['cellphone'],body: msg['message']) do |response|
+        @kannel.send_sms(from: @options['short_number'], to: msg['cellphone'],body: msg['message'].squish) do |response|          
+          sended = Sender.find(@options['mongo_id'])
           if response.success?
-            sended = Sender.find(@options['mongo_id'])
             sended.status = 'SUCCESS'
-            sended.save
+          else
+            sended.status = 'ERROR'
           end
+          sended.save
         end
         @kannel = nil
         status

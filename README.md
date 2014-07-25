@@ -6,6 +6,7 @@ through this file to ensure you get going quickly.
 
 Message to test (RabbitMQ Message)
 =================================
+{"body":{"cellphone":"0981460196","message":"Test of bulk", "id": "123"},"type":"1", "expire_in":"10/04/2014 18:20:00"}
 {"body":{"cellphone":"0981460196","message":"Test of bulk", "id": "123"},"type":"1"}
 {"body":{"message":"HOla llega el mensaje","cellphone":"0981714008"},"type":"1"}
 {"body":[
