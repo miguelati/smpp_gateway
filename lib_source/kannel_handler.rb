@@ -13,17 +13,39 @@ class KannelHandler
   def process(req)
     @sender_reg = Sender.where(id_message: req.params['id'], app: req.params['app']).first
     #puts @sender_reg.inspect
+    error = parse_error(req.params['error'])
     if @sender_reg != nil
       if req.params['type'] == '1' || req.params['type'] == '8'
         status = "SUCCESS"
-      else
+      elsif error != false && error[:retry] == 1
         status = "RETRY"
+      elsif error != false && error[:code] == '0x0000000B'
+        status = "INVALID_NUMBER"
+      else
+        status = "ERROR"
       end
       update_status_in_store(status, req.params['type'], req.params['error'])
     
       [200, {"Content-Type" => "text/html"}, ["ACK"]]
     else
       [404, {"Content-Type" => "text/html"}, ["No se encuentra!"]]
+    end
+  end
+
+  def parse_error(error)
+    stack_errors = [
+      {code: '0x00000401', description: 'La linea de Personal no tiene saldo.', retry: 1},
+      {code: '0x0000000B', description: 'La linea de Personal debe ser dada de baja pues no existe.', retry: 0},
+      {code: '0x00000000', description: 'Operacion exitosa.', retry: 1},
+      {code: '0x00000402', description: 'No se pudo obtener datos del abonado.', retry: 1},
+      {code: '0x00000406', description: 'Excepcion Generica.', retry: 1}
+    ]
+
+    finded = stack_errors.select{ |el| el[:code] == error.split("/")[2] }
+    if finded.nil? || finded.length == 0
+      false
+    else
+      finded
     end
   end
   
