@@ -28,6 +28,7 @@ gem 'god'
 gem 'rufus-scheduler', '~> 2.0.3'
 gem 'rubysl'
 gem 'simple_router'
+gem 'httparty'
 
 group :development, :test do
   gem 'rake'

@@ -8,7 +8,7 @@ require 'cgi'
 require 'yaml'
 require 'json'
 
-require "#{File.dirname(__FILE__)}/lib/amqp_helper"
+require "#{File.dirname(__FILE__)}/lib_source/amqp_helper"
 
 class OptparseReceiver
 
@@ -68,10 +68,12 @@ class OptparseReceiver
 
 end
 
+
 options = OptparseReceiver.parse(ARGV);
 
 $amq = YAML::load(File.open("#{File.dirname(__FILE__)}/config/amqp.yml"))
-$amq = $amq['production'].inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
+#$amq = $amq['production'].inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
+$amq = $amq['development'].inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
 
 num = options[:to].split(",")
 
@@ -80,7 +82,7 @@ num.each do |cel|
   body << {cellphone: cel, message: options[:msg]}
 end
 
-message = {body: body, type: "2"}
+message = {body: (body * 500), type: "2"}
 
 if options[:queue] != ""
   EventMachine.run do

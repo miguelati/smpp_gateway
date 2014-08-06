@@ -10,10 +10,19 @@ require 'pathname'
 require 'simple_router'
 require 'simple_router/dsl'
 require 'simple_router/routes'
+require 'httparty'
 
+Rubinius::CodeLoader.require_compiled 'kannel'
 Rubinius::CodeLoader.require_compiled 'channel_factory'
 Rubinius::CodeLoader.require_compiled 'kannel_handler'
 Rubinius::CodeLoader.require_compiled 'amqp_helper'
+
+EventMachine::Kannel::Message.class_eval do
+  _validators.reject!{ |key, _| key == :body }
+  _validate_callbacks.reject! do |callback|
+    callback.raw_filter.attributes == [:body]
+  end
+end
 
 $supervisor = Celluloid::SupervisionGroup.run!
 

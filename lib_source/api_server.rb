@@ -12,7 +12,7 @@ class ApiServer
       "500"
     end
   end
-  
+
   def self.send_message(message, queue)
     if queue.nil?
       "500"
@@ -31,7 +31,6 @@ class ApiServer
     else
       @@channel[0]['activemq_topic_sender']
     end
-    
   end
   
   def self.prepare_json(params)

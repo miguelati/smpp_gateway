@@ -32,7 +32,7 @@ class ChannelFactory
             end
           end
         rescue Exception => e
-          puts e.inspect
+          DaemonKit.logger.debug e.inspect
         end
       end
       
@@ -58,17 +58,17 @@ class ChannelFactory
       
       def status_kannel_process(options, msg, dlr)
         status = "PENDING"
-        @kannel = EM::Kannel.new(username: @options['kannel_user'], password: @options['kannel_pass'], url: @options['kannel_url'], :dlr_mask => $config['configuration']['dlr_mask'], :dlr_callback_url => dlr)
+        @kannel = Server::Kannel.new(username: @options['kannel_user'], password: @options['kannel_pass'], url: @options['kannel_url'], :dlr_mask => $config['configuration']['dlr_mask'], :dlr_callback_url => dlr)
         @kannel.send_sms(from: @options['short_number'], to: msg['cellphone'],body: msg['message'].squish) do |response|          
           sended = Sender.find(@options['mongo_id'])
           if response.success?
             sended.status = 'SUCCESS'
           else
-            sended.status = 'ERROR'
+            sended.status = 'RETRY'
           end
           sended.save
         end
-        @kannel = nil
+        
         status
       end
       
@@ -79,7 +79,7 @@ class ChannelFactory
           registro.status = status_kannel_process(@options, msg, dlr)
           registro.save
         rescue Exception => e
-          puts e.inspect
+          DaemonKit.logger.debug e.inspect
         end
       end
     end
