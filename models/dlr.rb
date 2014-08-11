@@ -7,4 +7,6 @@ class Dlr
   field :message_id, type: String
   field :app, type: String
 
+  embedded_in :sender
+
 end

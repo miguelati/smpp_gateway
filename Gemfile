@@ -9,7 +9,7 @@
 source 'https://rubygems.org'
 
 # daemon-kit
-gem 'daemon-kit'
+gem 'daemon-kit', '~> 0.3.1'
 
 # safely (http://github.com/kennethkalmer/safely)
 gem 'safely'
@@ -19,8 +19,8 @@ gem 'amqp'
 gem 'multi_json', '1.8.1'
 gem "em-kannel"
 gem 'celluloid'
-gem 'mongoid'
-gem 'activesupport', '3.1.12'
+gem 'mongoid', '~> 3.1.6'
+gem 'activesupport', '~> 3.2'
 gem 'timers'
 gem 'rack'
 gem "mongrel", "~> 1.2.0.pre2"
@@ -29,10 +29,11 @@ gem 'rufus-scheduler', '~> 2.0.3'
 gem 'rubysl'
 gem 'simple_router'
 gem 'httparty'
+gem 'tzinfo', '~> 0.3.29'
 
 group :development, :test do
   gem 'rake'
   gem 'rspec'
-  gem 'guard'
+  gem 'guard', '~> 2.6.1'
   gem 'guard-shell'
 end

@@ -1,8 +1,7 @@
 class KannelHandler
   def call(env)    
     req = Rack::Request.new(env)
-    puts "[kannel handler] Request params type => #{req.params['type']} | error => #{req.params['error']} | id => #{req.params['id']} | app => #{req.params['app']}"
-    Dlr.create(type: req.params['type'], error: req.params['error'], message_id: req.params['id'], app: req.params['app'])
+    DaemonKit.logger.info "[kannel handler] Request params type => #{req.params['type']} | error => #{req.params['error']} | id => #{req.params['id']} | app => #{req.params['app']}"
     if params_is_ok?(req.params)
       process(req)
     else
@@ -12,23 +11,26 @@ class KannelHandler
   
   def process(req)
     @sender_reg = Sender.where(id_message: req.params['id'], app: req.params['app']).first
-    #puts @sender_reg.inspect
     error = parse_error(req.params['error'])
     if @sender_reg != nil
-      if req.params['type'] == '1' || req.params['type'] == '8'
-        status = "SUCCESS"
-      elsif error != false && error[:retry] == 1
-        status = "RETRY"
-      elsif error != false && error[:code] == '0x0000000B'
-        status = "INVALID_NUMBER"
-      else
-        status = "ERROR"
-      end
+      @sender_reg.dlr = Dlr.new(type: req.params['type'], error: req.params['error'], message_id: req.params['id'], app: req.params['app'])
+      status = get_status(req.params['type'], error)
       update_status_in_store(status, req.params['type'], req.params['error'])
-    
       [200, {"Content-Type" => "text/html"}, ["ACK"]]
     else
       [404, {"Content-Type" => "text/html"}, ["No se encuentra!"]]
+    end
+  end
+
+  def get_status(type, error)
+    if type == '1' || type == '8'
+      "SUCCESS"
+    elsif error != false && error[:retry] == 1
+      "RETRY"
+    elsif error != false && error[:code] == '0x0000000B'
+      "INVALID_NUMBER"
+    else
+      "ERROR"
     end
   end
 
@@ -59,8 +61,6 @@ class KannelHandler
   
   def update_status_in_store(status, type, error)
     @sender_reg.status = status
-    @sender_reg.dlr_type = type
-    @sender_reg.dlr_error = error
     @sender_reg.save
     send_to_amq(status, @sender_reg.app, @sender_reg.id_message) unless @sender_reg.id_message.nil? && @sender_reg.id_message == ""
   end
@@ -92,7 +92,8 @@ class KannelHandler
               EventMachine.stop { exit }
             }
           end
-        rescue
+        rescue Exception => e
+          DaemonKit.logger.error e.inspectn
           helper.close_connection do
             @sender_reg.status = "ERROR_RESPONSE"
             @sender_reg.save

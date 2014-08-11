@@ -32,7 +32,7 @@ class ChannelFactory
             end
           end
         rescue Exception => e
-          DaemonKit.logger.debug e.inspect
+          DaemonKit.logger.error e.inspect
         end
       end
       

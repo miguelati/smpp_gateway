@@ -1,6 +1,7 @@
 class Sender
   include Mongoid::Document
   include Mongoid::Timestamps
+  embeds_one :dlr
 
   field :from, type: String
   field :to, type: String
