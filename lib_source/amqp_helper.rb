@@ -17,7 +17,7 @@ class AmqpHelper
     exchange = @channel.default_exchange
     
     @channel.on_error do |ch, close|
-      puts "Error on channel2: #{ch.inspect}, #{close.inspect}"
+      DaemonKit.logger.error "Error on channel2: #{ch.inspect}, #{close.inspect}"
     end
     
     exchange.publish message, options do
@@ -30,7 +30,7 @@ class AmqpHelper
       block.call(metadata, payload) if block_given?
     end
     @channel.on_error do |ch, close|
-      puts "Error on channel: #{close.reply_text}, #{close.inspect}"
+      DaemonKit.logger.error "Error on channel: #{close.reply_text}, #{close.inspect}"
     end
   end
   

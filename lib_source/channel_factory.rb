@@ -38,9 +38,8 @@ class ChannelFactory
       
       def response_ok(message)
         unless message['id'].nil? || message['id'] == ""
-          puts "hola"
           @helper.publish({id: message['id'], status: "ACK_DAEMON"}.to_json, :routing_key => @options['activemq_topic_response'], :persistent => true, :content_type => 'text/json') do |connection|
-            puts "Response is ok!"
+            DaemonKit.logger.debug "Response is ok!"
           end
         end
       end
@@ -55,16 +54,21 @@ class ChannelFactory
         @options['mongo_id'] = registro.id
         registro
       end
+
+      def prepare_message(message)
+        message.gsub(/[^\P{C}\n]+/u,'').tr('áéíóúÁÉÍÓÚ', 'aeiouAEIOU').gsub(/ñ/,'nh').gsub(/Ñ/,'Nh').gsub(/”/, "\"").gsub(/“/,"\"")
+      end
       
       def status_kannel_process(options, msg, dlr)
         status = "PENDING"
         @kannel = Server::Kannel.new(username: @options['kannel_user'], password: @options['kannel_pass'], url: @options['kannel_url'], :dlr_mask => $config['configuration']['dlr_mask'], :dlr_callback_url => dlr)
-        @kannel.send_sms(from: @options['short_number'], to: msg['cellphone'],body: msg['message'].squish) do |response|          
+
+        @kannel.send_sms(from: @options['short_number'], to: msg['cellphone'],body: prepare_message(msg['message'])) do |response|          
           sended = Sender.find(@options['mongo_id'])
           if response.success?
             sended.status = 'SUCCESS'
           else
-            sended.status = 'RETRY'
+            sended.status = 'RETRY'          
           end
           sended.save
         end

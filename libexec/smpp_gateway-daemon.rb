@@ -7,49 +7,48 @@ DaemonKit::Application.running! do |config|
   config.trap('INT') do
     # do something clever
     $pid.each { |pid| Process.kill('KILL', pid) }
-    #puts "termino!!"
   end
-  config.trap( 'TERM', Proc.new { $pid.each {|pid| Process.kill('KILL', pid) } } )
+  config.trap( 'TERM', Proc.new { $pid.each {|pid| Process.kill('KILL', pid); Safely::Backtrace.safe_shutdown! } } )
 end
 
 $pid = []
 #Receiver for kannel message
 $pid[0] = fork do
-  
-  Signal.trap("HUP") { puts "Fork finnish"; exit}
+
+  Signal.trap("HUP") { exit }
   $config = DaemonKit::Config.load('configurations')
-  
+
   begin
-    Rack::Handler::Mongrel.run KannelHandler.new, :Port => $config['configuration']['dlr_port']
+    Rack::Handler.get(:unicorn).run KannelHandler.new, :Port => $config['configuration']['dlr_port']
   rescue Exception => e
-    puts e
+    DaemonKit.logger.error e.inspect
   end
 end
 
 # Timer for tasks
 $pid[1] = fork do
   Rubinius::CodeLoader.require_compiled 'retry'
-  Signal.trap("HUP") { puts "Fork finnish"; exit}
-  
+  Signal.trap("HUP") { exit }
+
   DaemonKit::Cron.scheduler.every("1m") do
     #DaemonKit.logger.debug "Scheduled task completed at #{Time.now}"
     Retry.find_sms_enqueued
   end
-  
+
   DaemonKit::Cron.run
-  
+
 end
 
 # API Server
 $pid[2] = fork do
   Rubinius::CodeLoader.require_compiled 'api_server'
-  Signal.trap("HUP") { puts "Fork finnish"; exit}
+  Signal.trap("HUP") { exit }
   $config = DaemonKit::Config.load('configurations')
-  
+
   begin
-    Rack::Handler::Mongrel.run ApiServer.new, :Port => $config['configuration']['api_server_port']
+    Rack::Handler.get(:unicorn).run ApiServer.new, :Port => $config['configuration']['api_server_port']
   rescue Exception => e
-    puts e
+    DaemonKit.logger.error e.inspect
   end
 end
 
@@ -74,11 +73,11 @@ DaemonKit::AMQP.run do |connection|
   # amq.queue('test').subscribe do |msg|
   #   DaemonKit.logger.debug "Received message: #{msg.inspect}"
   # end
-  
+
   $config['configuration']['channels'].size.times do |inx|
     $supervisor.actors[inx].connect_queues(connection)
   end
-  
+
 end
 
 

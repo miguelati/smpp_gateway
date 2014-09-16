@@ -13,6 +13,8 @@ GEM
       amq-protocol (>= 1.9.2)
       eventmachine
     builder (3.0.4)
+    bunny (1.4.0)
+      amq-protocol (>= 1.9.2)
     celluloid (0.15.2)
       timers (~> 1.1.0)
     coderay (1.1.0)
@@ -20,7 +22,6 @@ GEM
     daemon-kit (0.3.1)
       eventmachine (>= 0.12.10)
       thor
-    daemons (1.0.10)
     diff-lcs (1.2.5)
     em-http-request (1.1.2)
       addressable (>= 2.3.4)
@@ -38,7 +39,6 @@ GEM
     ffi (1.9.3)
     ffi2-generators (0.1.1)
     formatador (0.2.5)
-    gem_plugin (0.2.3)
     god (0.13.4)
     guard (2.6.1)
       formatador (>= 0.2.4)
@@ -65,9 +65,6 @@ GEM
       moped (~> 1.4)
       origin (~> 1.0)
       tzinfo (~> 0.3.29)
-    mongrel (1.2.0.pre2)
-      daemons (~> 1.0.10)
-      gem_plugin (~> 0.2.3)
     moped (1.5.2)
     multi_json (1.8.1)
     multi_xml (0.5.5)
@@ -76,6 +73,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    puma (2.9.1)
+      rack (>= 1.1, < 2.0)
     rack (1.5.2)
     rake (10.3.2)
     rb-fsevent (0.9.4)
@@ -310,6 +309,7 @@ PLATFORMS
 DEPENDENCIES
   activesupport (~> 3.2)
   amqp
+  bunny
   celluloid
   daemon-kit (~> 0.3.1)
   em-kannel
@@ -318,8 +318,8 @@ DEPENDENCIES
   guard-shell
   httparty
   mongoid (~> 3.1.6)
-  mongrel (~> 1.2.0.pre2)
   multi_json (= 1.8.1)
+  puma
   rack
   rake
   rspec

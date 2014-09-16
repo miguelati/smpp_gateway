@@ -14,8 +14,9 @@ gem 'daemon-kit', '~> 0.3.1'
 # safely (http://github.com/kennethkalmer/safely)
 gem 'safely'
 # gem 'toadhopper' # For reporting exceptions to hoptoad
-# gem 'mail' # For reporting exceptions via mail
+gem 'mail' # For reporting exceptions via mail
 gem 'amqp'
+gem 'bunny'
 gem 'multi_json', '1.8.1'
 gem "em-kannel"
 gem 'celluloid'
@@ -23,7 +24,8 @@ gem 'mongoid', '~> 3.1.6'
 gem 'activesupport', '~> 3.2'
 gem 'timers'
 gem 'rack'
-gem "mongrel", "~> 1.2.0.pre2"
+gem 'unicorn'
+gem 'unicorn-rails'
 gem 'god'
 gem 'rufus-scheduler', '~> 2.0.3'
 gem 'rubysl'

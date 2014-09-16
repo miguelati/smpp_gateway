@@ -4,12 +4,15 @@ require 'celluloid/autostart'
 require 'em-kannel'
 require 'json'
 require 'rack'
+require 'rack/handler'
+require 'puma'
 require 'timers'
 require 'json'
 require 'pathname'
 require 'simple_router'
 require 'simple_router/dsl'
 require 'simple_router/routes'
+require 'open-uri'
 require 'httparty'
 
 Rubinius::CodeLoader.require_compiled 'kannel'
@@ -28,7 +31,7 @@ $supervisor = Celluloid::SupervisionGroup.run!
 
 $config['configuration']['channels'].each do |channel|
   ChannelFactory.create(channel['name'])
-  
+
   $supervisor.pool(Object.const_get("#{channel['name'].capitalize}Channel"), as: "#{channel['name'].downcase}_channel".to_sym, args: [channel], size: channel['pool_size'])
-  
+
 end
