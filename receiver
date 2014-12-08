@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# ./receiver -f 0972444000 -t 0981460196 -m 'Test' -i 2014-03-01+10:30:20
+# ./receiver -f 0972283718 -t 0981460196 -m 'Test' -i 2014-03-01+10:30:20
 require 'optparse'
 require 'date'
 require 'pp'

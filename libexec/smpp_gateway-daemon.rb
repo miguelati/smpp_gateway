@@ -13,20 +13,29 @@ end
 
 $pid = []
 #Receiver for kannel message
-$pid[0] = fork do
+$pid << fork do
 
   Signal.trap("HUP") { exit }
   $config = DaemonKit::Config.load('configurations')
+  app_kannel_handler = Rack::Builder.new do
+    use  Rack::MailExceptions do |mail|
+      mail.to 'miguel.godoy@me.com'
+      mail.from 'miguelgodoyg@gmail.com'
+      mail.subject '[KannelHandler] %s'
+      mail.smtp $config['configuration']['smtp_settings']
+    end
+    run KannelHandler.new
+  end
 
   begin
-    Rack::Handler.get(:unicorn).run KannelHandler.new, :Port => $config['configuration']['dlr_port']
+    Rack::Handler.get(:unicorn).run app_kannel_handler, :Port => $config['configuration']['dlr_port'], :config_file => DAEMON_ROOT
   rescue Exception => e
     DaemonKit.logger.error e.inspect
   end
 end
 
 # Timer for tasks
-$pid[1] = fork do
+$pid << fork do
   Rubinius::CodeLoader.require_compiled 'retry'
   Signal.trap("HUP") { exit }
 
@@ -36,21 +45,33 @@ $pid[1] = fork do
   end
 
   DaemonKit::Cron.run
-
 end
 
 # API Server
-$pid[2] = fork do
-  Rubinius::CodeLoader.require_compiled 'api_server'
-  Signal.trap("HUP") { exit }
-  $config = DaemonKit::Config.load('configurations')
+if $config['configuration']['api_server_enabled']
+  $pid << fork do
+    Rubinius::CodeLoader.require_compiled 'api_server'
+    Signal.trap("HUP") { exit }
+    $config = DaemonKit::Config.load('configurations')
 
-  begin
-    Rack::Handler.get(:unicorn).run ApiServer.new, :Port => $config['configuration']['api_server_port']
-  rescue Exception => e
-    DaemonKit.logger.error e.inspect
+    app_api_server = Rack::Builder.new do
+      use  Rack::MailExceptions do |mail|
+        mail.to 'miguel.godoy@me.com'
+        mail.from 'miguelgodoyg@gmail.com'
+        mail.subject '[KannelHandler] %s'
+        mail.smtp $config['configuration']['smtp_settings']
+      end
+      run ApiServer.new
+    end
+
+    begin
+      Rack::Handler.get(:unicorn).run app_api_server, :Port => $config['configuration']['api_server_port'], :config_file => DAEMON_ROOT
+    rescue Exception => e
+      DaemonKit.logger.error e.inspect
+    end
   end
 end
+
 
 # IMPORTANT CONFIGURATION NOTE
 #
@@ -79,6 +100,3 @@ DaemonKit::AMQP.run do |connection|
   end
 
 end
-
-
-

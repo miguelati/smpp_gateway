@@ -7,6 +7,7 @@ Dir["#{File.dirname(__FILE__)}/../models/*.rb"].each {|file| require file }
 
 # Uncomment below to force your daemon into production mode
 ENV['DAEMON_ENV'] ||= 'production'
+ENV["UNICORN_WORKERS"] = '5'
 #ENV['DAEMON_ENV'] ||= 'development'
 
 # Boot up

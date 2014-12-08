@@ -13,17 +13,18 @@ gem 'daemon-kit', '~> 0.3.1'
 
 # safely (http://github.com/kennethkalmer/safely)
 gem 'safely'
-# gem 'toadhopper' # For reporting exceptions to hoptoad
+gem 'toadhopper' # For reporting exceptions to hoptoad
 gem 'mail' # For reporting exceptions via mail
 gem 'amqp'
 gem 'bunny'
 gem 'multi_json', '1.8.1'
-gem "em-kannel"
+#gem "em-kannel"
 gem 'celluloid'
 gem 'mongoid', '~> 3.1.6'
 gem 'activesupport', '~> 3.2'
 gem 'timers'
 gem 'rack'
+gem 'rack-contrib'
 gem 'unicorn'
 gem 'unicorn-rails'
 gem 'god'

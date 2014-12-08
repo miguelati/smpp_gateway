@@ -1,0 +1,171 @@
+# Logfile created on 2014-11-24 14:49:07 -0300 by logger.rb/v1.2.7
+[11/24/14 14:49:07 -0300 prosurrhel1 (12935)] INFO : Starting the New Relic agent in "development" environment.
+[11/24/14 14:49:07 -0300 prosurrhel1 (12935)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[11/24/14 14:49:07 -0300 prosurrhel1 (12935)] INFO : Reading configuration from config/newrelic.yml (/usr/share/smpp_gateway_prosur)
+[11/24/14 14:49:07 -0300 prosurrhel1 (12935)] INFO : Environment: development
+[11/24/14 14:49:07 -0300 prosurrhel1 (12935)] INFO : No known dispatcher detected.
+[11/24/14 14:49:07 -0300 prosurrhel1 (12935)] INFO : Application: My Application (Development)
+[11/24/14 14:49:07 -0300 prosurrhel1 (12935)] INFO : Installing Net instrumentation
+[11/24/14 14:49:07 -0300 prosurrhel1 (12935)] INFO : Installing deferred Rack instrumentation
+[11/24/14 14:49:07 -0300 prosurrhel1 (12935)] INFO : Installing Rack::Builder middleware instrumentation
+[11/24/14 14:49:07 -0300 prosurrhel1 (12935)] INFO : Finished instrumentation
+[11/24/14 14:49:17 -0300 prosurrhel1 (12944)] INFO : Starting the New Relic agent in "development" environment.
+[11/24/14 14:49:17 -0300 prosurrhel1 (12944)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[11/24/14 14:49:17 -0300 prosurrhel1 (12944)] INFO : Reading configuration from config/newrelic.yml (/usr/share/smpp_gateway_prosur)
+[11/24/14 14:49:17 -0300 prosurrhel1 (12944)] INFO : Environment: development
+[11/24/14 14:49:17 -0300 prosurrhel1 (12944)] INFO : No known dispatcher detected.
+[11/24/14 14:49:17 -0300 prosurrhel1 (12944)] INFO : Application: My Application (Development)
+[11/24/14 14:49:17 -0300 prosurrhel1 (12944)] INFO : Installing Net instrumentation
+[11/24/14 14:49:17 -0300 prosurrhel1 (12944)] INFO : Installing deferred Rack instrumentation
+[11/24/14 14:49:17 -0300 prosurrhel1 (12944)] INFO : Installing Rack::Builder middleware instrumentation
+[11/24/14 14:49:17 -0300 prosurrhel1 (12944)] INFO : Finished instrumentation
+[11/25/14 09:49:03 -0300 prosurrhel1 (31527)] INFO : Starting the New Relic agent in "development" environment.
+[11/25/14 09:49:03 -0300 prosurrhel1 (31527)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[11/25/14 09:49:03 -0300 prosurrhel1 (31527)] INFO : Reading configuration from config/newrelic.yml (/usr/share/smpp_gateway_prosur)
+[11/25/14 09:49:03 -0300 prosurrhel1 (31527)] INFO : Environment: development
+[11/25/14 09:49:03 -0300 prosurrhel1 (31527)] INFO : No known dispatcher detected.
+[11/25/14 09:49:03 -0300 prosurrhel1 (31527)] INFO : Application: My Application (Development)
+[11/25/14 09:49:03 -0300 prosurrhel1 (31527)] INFO : Installing Net instrumentation
+[11/25/14 09:49:03 -0300 prosurrhel1 (31527)] INFO : Installing deferred Rack instrumentation
+[11/25/14 09:49:03 -0300 prosurrhel1 (31527)] INFO : Installing Rack::Builder middleware instrumentation
+[11/25/14 09:49:03 -0300 prosurrhel1 (31527)] INFO : Finished instrumentation
+[11/25/14 09:49:15 -0300 prosurrhel1 (31536)] INFO : Starting the New Relic agent in "development" environment.
+[11/25/14 09:49:15 -0300 prosurrhel1 (31536)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[11/25/14 09:49:15 -0300 prosurrhel1 (31536)] INFO : Reading configuration from config/newrelic.yml (/usr/share/smpp_gateway_prosur)
+[11/25/14 09:49:15 -0300 prosurrhel1 (31536)] INFO : Environment: development
+[11/25/14 09:49:15 -0300 prosurrhel1 (31536)] INFO : No known dispatcher detected.
+[11/25/14 09:49:15 -0300 prosurrhel1 (31536)] INFO : Application: My Application (Development)
+[11/25/14 09:49:15 -0300 prosurrhel1 (31536)] INFO : Installing Net instrumentation
+[11/25/14 09:49:15 -0300 prosurrhel1 (31536)] INFO : Installing deferred Rack instrumentation
+[11/25/14 09:49:15 -0300 prosurrhel1 (31536)] INFO : Installing Rack::Builder middleware instrumentation
+[11/25/14 09:49:15 -0300 prosurrhel1 (31536)] INFO : Finished instrumentation
+[11/26/14 15:07:32 -0300 prosurrhel1 (22747)] INFO : Starting the New Relic agent in "development" environment.
+[11/26/14 15:07:32 -0300 prosurrhel1 (22747)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[11/26/14 15:07:32 -0300 prosurrhel1 (22747)] INFO : Reading configuration from config/newrelic.yml (/usr/share/smpp_gateway_prosur)
+[11/26/14 15:07:32 -0300 prosurrhel1 (22747)] INFO : Environment: development
+[11/26/14 15:07:32 -0300 prosurrhel1 (22747)] INFO : No known dispatcher detected.
+[11/26/14 15:07:32 -0300 prosurrhel1 (22747)] INFO : Application: My Application (Development)
+[11/26/14 15:07:32 -0300 prosurrhel1 (22747)] INFO : Installing Net instrumentation
+[11/26/14 15:07:32 -0300 prosurrhel1 (22747)] INFO : Installing deferred Rack instrumentation
+[11/26/14 15:07:32 -0300 prosurrhel1 (22747)] INFO : Installing Rack::Builder middleware instrumentation
+[11/26/14 15:07:32 -0300 prosurrhel1 (22747)] INFO : Finished instrumentation
+[11/26/14 15:07:50 -0300 prosurrhel1 (22761)] INFO : Starting the New Relic agent in "development" environment.
+[11/26/14 15:07:50 -0300 prosurrhel1 (22761)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[11/26/14 15:07:50 -0300 prosurrhel1 (22761)] INFO : Reading configuration from config/newrelic.yml (/usr/share/smpp_gateway_prosur)
+[11/26/14 15:07:50 -0300 prosurrhel1 (22761)] INFO : Environment: development
+[11/26/14 15:07:50 -0300 prosurrhel1 (22761)] INFO : No known dispatcher detected.
+[11/26/14 15:07:50 -0300 prosurrhel1 (22761)] INFO : Application: My Application (Development)
+[11/26/14 15:07:50 -0300 prosurrhel1 (22761)] INFO : Installing Net instrumentation
+[11/26/14 15:07:50 -0300 prosurrhel1 (22761)] INFO : Installing deferred Rack instrumentation
+[11/26/14 15:07:50 -0300 prosurrhel1 (22761)] INFO : Installing Rack::Builder middleware instrumentation
+[11/26/14 15:07:50 -0300 prosurrhel1 (22761)] INFO : Finished instrumentation
+[11/26/14 15:08:17 -0300 prosurrhel1 (22826)] INFO : Starting the New Relic agent in "development" environment.
+[11/26/14 15:08:17 -0300 prosurrhel1 (22826)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[11/26/14 15:08:17 -0300 prosurrhel1 (22826)] INFO : Reading configuration from config/newrelic.yml (/usr/share/smpp_gateway_prosur)
+[11/26/14 15:08:17 -0300 prosurrhel1 (22826)] INFO : Environment: development
+[11/26/14 15:08:17 -0300 prosurrhel1 (22826)] INFO : No known dispatcher detected.
+[11/26/14 15:08:17 -0300 prosurrhel1 (22826)] INFO : Application: My Application (Development)
+[11/26/14 15:08:17 -0300 prosurrhel1 (22826)] INFO : Installing Net instrumentation
+[11/26/14 15:08:17 -0300 prosurrhel1 (22826)] INFO : Installing deferred Rack instrumentation
+[11/26/14 15:08:17 -0300 prosurrhel1 (22826)] INFO : Installing Rack::Builder middleware instrumentation
+[11/26/14 15:08:17 -0300 prosurrhel1 (22826)] INFO : Finished instrumentation
+[11/26/14 15:16:44 -0300 prosurrhel1 (23130)] INFO : Starting the New Relic agent in "development" environment.
+[11/26/14 15:16:44 -0300 prosurrhel1 (23130)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[11/26/14 15:16:44 -0300 prosurrhel1 (23130)] INFO : Reading configuration from config/newrelic.yml (/usr/share/smpp_gateway_prosur)
+[11/26/14 15:16:44 -0300 prosurrhel1 (23130)] INFO : Environment: development
+[11/26/14 15:16:44 -0300 prosurrhel1 (23130)] INFO : No known dispatcher detected.
+[11/26/14 15:16:44 -0300 prosurrhel1 (23130)] INFO : Application: My Application (Development)
+[11/26/14 15:16:45 -0300 prosurrhel1 (23130)] INFO : Installing Net instrumentation
+[11/26/14 15:16:45 -0300 prosurrhel1 (23130)] INFO : Installing deferred Rack instrumentation
+[11/26/14 15:16:45 -0300 prosurrhel1 (23130)] INFO : Installing Rack::Builder middleware instrumentation
+[11/26/14 15:16:45 -0300 prosurrhel1 (23130)] INFO : Finished instrumentation
+[11/26/14 15:24:24 -0300 prosurrhel1 (23333)] INFO : Starting the New Relic agent in "development" environment.
+[11/26/14 15:24:24 -0300 prosurrhel1 (23333)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[11/26/14 15:24:24 -0300 prosurrhel1 (23333)] INFO : Reading configuration from config/newrelic.yml (/usr/share/smpp_gateway_prosur)
+[11/26/14 15:24:24 -0300 prosurrhel1 (23333)] INFO : Environment: development
+[11/26/14 15:24:24 -0300 prosurrhel1 (23333)] INFO : No known dispatcher detected.
+[11/26/14 15:24:24 -0300 prosurrhel1 (23333)] INFO : Application: My Application (Development)
+[11/26/14 15:24:25 -0300 prosurrhel1 (23333)] INFO : Installing Net instrumentation
+[11/26/14 15:24:25 -0300 prosurrhel1 (23333)] INFO : Installing deferred Rack instrumentation
+[11/26/14 15:24:25 -0300 prosurrhel1 (23333)] INFO : Installing Rack::Builder middleware instrumentation
+[11/26/14 15:24:25 -0300 prosurrhel1 (23333)] INFO : Finished instrumentation
+[11/26/14 15:26:48 -0300 prosurrhel1 (23481)] INFO : Starting the New Relic agent in "development" environment.
+[11/26/14 15:26:48 -0300 prosurrhel1 (23481)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[11/26/14 15:26:48 -0300 prosurrhel1 (23481)] INFO : Reading configuration from config/newrelic.yml (/usr/share/smpp_gateway_prosur)
+[11/26/14 15:26:48 -0300 prosurrhel1 (23481)] INFO : Environment: development
+[11/26/14 15:26:48 -0300 prosurrhel1 (23481)] INFO : No known dispatcher detected.
+[11/26/14 15:26:48 -0300 prosurrhel1 (23481)] INFO : Application: My Application (Development)
+[11/26/14 15:26:48 -0300 prosurrhel1 (23481)] INFO : Installing Net instrumentation
+[11/26/14 15:26:48 -0300 prosurrhel1 (23481)] INFO : Installing deferred Rack instrumentation
+[11/26/14 15:26:48 -0300 prosurrhel1 (23481)] INFO : Installing Rack::Builder middleware instrumentation
+[11/26/14 15:26:48 -0300 prosurrhel1 (23481)] INFO : Finished instrumentation
+[11/26/14 15:31:47 -0300 prosurrhel1 (23584)] INFO : Starting the New Relic agent in "development" environment.
+[11/26/14 15:31:47 -0300 prosurrhel1 (23584)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[11/26/14 15:31:47 -0300 prosurrhel1 (23584)] INFO : Reading configuration from config/newrelic.yml (/usr/share/smpp_gateway_prosur)
+[11/26/14 15:31:47 -0300 prosurrhel1 (23584)] INFO : Environment: development
+[11/26/14 15:31:47 -0300 prosurrhel1 (23584)] INFO : No known dispatcher detected.
+[11/26/14 15:31:47 -0300 prosurrhel1 (23584)] INFO : Application: My Application (Development)
+[11/26/14 15:31:47 -0300 prosurrhel1 (23584)] INFO : Installing Net instrumentation
+[11/26/14 15:31:47 -0300 prosurrhel1 (23584)] INFO : Installing deferred Rack instrumentation
+[11/26/14 15:31:47 -0300 prosurrhel1 (23584)] INFO : Installing Rack::Builder middleware instrumentation
+[11/26/14 15:31:47 -0300 prosurrhel1 (23584)] INFO : Finished instrumentation
+[11/26/14 15:37:12 -0300 prosurrhel1 (23775)] INFO : Starting the New Relic agent in "development" environment.
+[11/26/14 15:37:12 -0300 prosurrhel1 (23775)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[11/26/14 15:37:12 -0300 prosurrhel1 (23775)] INFO : Reading configuration from config/newrelic.yml (/usr/share/smpp_gateway_prosur)
+[11/26/14 15:37:12 -0300 prosurrhel1 (23775)] INFO : Environment: development
+[11/26/14 15:37:12 -0300 prosurrhel1 (23775)] INFO : No known dispatcher detected.
+[11/26/14 15:37:12 -0300 prosurrhel1 (23775)] INFO : Application: My Application (Development)
+[11/26/14 15:37:12 -0300 prosurrhel1 (23775)] INFO : Installing Net instrumentation
+[11/26/14 15:37:12 -0300 prosurrhel1 (23775)] INFO : Installing deferred Rack instrumentation
+[11/26/14 15:37:12 -0300 prosurrhel1 (23775)] INFO : Installing Rack::Builder middleware instrumentation
+[11/26/14 15:37:12 -0300 prosurrhel1 (23775)] INFO : Finished instrumentation
+[11/26/14 15:37:22 -0300 prosurrhel1 (23783)] INFO : Starting the New Relic agent in "development" environment.
+[11/26/14 15:37:22 -0300 prosurrhel1 (23783)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[11/26/14 15:37:22 -0300 prosurrhel1 (23783)] INFO : Reading configuration from config/newrelic.yml (/usr/share/smpp_gateway_prosur)
+[11/26/14 15:37:22 -0300 prosurrhel1 (23783)] INFO : Environment: development
+[11/26/14 15:37:22 -0300 prosurrhel1 (23783)] INFO : No known dispatcher detected.
+[11/26/14 15:37:22 -0300 prosurrhel1 (23783)] INFO : Application: My Application (Development)
+[11/26/14 15:37:22 -0300 prosurrhel1 (23783)] INFO : Installing Net instrumentation
+[11/26/14 15:37:22 -0300 prosurrhel1 (23783)] INFO : Installing deferred Rack instrumentation
+[11/26/14 15:37:22 -0300 prosurrhel1 (23783)] INFO : Installing Rack::Builder middleware instrumentation
+[11/26/14 15:37:22 -0300 prosurrhel1 (23783)] INFO : Finished instrumentation
+[11/27/14 11:15:57 -0300 prosurrhel1 (17558)] INFO : Starting the New Relic agent in "development" environment.
+[11/27/14 11:15:57 -0300 prosurrhel1 (17558)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[11/27/14 11:15:57 -0300 prosurrhel1 (17558)] INFO : Reading configuration from config/newrelic.yml (/usr/share/smpp_gateway_prosur)
+[11/27/14 11:15:57 -0300 prosurrhel1 (17558)] INFO : Environment: development
+[11/27/14 11:15:57 -0300 prosurrhel1 (17558)] INFO : No known dispatcher detected.
+[11/27/14 11:15:57 -0300 prosurrhel1 (17558)] INFO : Application: My Application (Development)
+[11/27/14 11:15:58 -0300 prosurrhel1 (17558)] INFO : Installing Net instrumentation
+[11/27/14 11:15:58 -0300 prosurrhel1 (17558)] INFO : Installing deferred Rack instrumentation
+[11/27/14 11:15:58 -0300 prosurrhel1 (17558)] INFO : Installing Rack::Builder middleware instrumentation
+[11/27/14 11:15:58 -0300 prosurrhel1 (17558)] INFO : Finished instrumentation
+[11/27/14 11:16:10 -0300 prosurrhel1 (17566)] INFO : Starting the New Relic agent in "development" environment.
+[11/27/14 11:16:10 -0300 prosurrhel1 (17566)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[11/27/14 11:16:10 -0300 prosurrhel1 (17566)] INFO : Reading configuration from config/newrelic.yml (/usr/share/smpp_gateway_prosur)
+[11/27/14 11:16:10 -0300 prosurrhel1 (17566)] INFO : Environment: development
+[11/27/14 11:16:10 -0300 prosurrhel1 (17566)] INFO : No known dispatcher detected.
+[11/27/14 11:16:10 -0300 prosurrhel1 (17566)] INFO : Application: My Application (Development)
+[11/27/14 11:16:10 -0300 prosurrhel1 (17566)] INFO : Installing Net instrumentation
+[11/27/14 11:16:10 -0300 prosurrhel1 (17566)] INFO : Installing deferred Rack instrumentation
+[11/27/14 11:16:10 -0300 prosurrhel1 (17566)] INFO : Installing Rack::Builder middleware instrumentation
+[11/27/14 11:16:10 -0300 prosurrhel1 (17566)] INFO : Finished instrumentation
+[12/02/14 09:19:53 -0300 prosurrhel1 (11730)] INFO : Starting the New Relic agent in "development" environment.
+[12/02/14 09:19:53 -0300 prosurrhel1 (11730)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[12/02/14 09:19:53 -0300 prosurrhel1 (11730)] INFO : Reading configuration from config/newrelic.yml (/usr/share/smpp_gateway_prosur)
+[12/02/14 09:19:53 -0300 prosurrhel1 (11730)] INFO : Environment: development
+[12/02/14 09:19:53 -0300 prosurrhel1 (11730)] INFO : No known dispatcher detected.
+[12/02/14 09:19:53 -0300 prosurrhel1 (11730)] INFO : Application: My Application (Development)
+[12/02/14 09:19:53 -0300 prosurrhel1 (11730)] INFO : Installing Net instrumentation
+[12/02/14 09:19:53 -0300 prosurrhel1 (11730)] INFO : Installing deferred Rack instrumentation
+[12/02/14 09:19:53 -0300 prosurrhel1 (11730)] INFO : Installing Rack::Builder middleware instrumentation
+[12/02/14 09:19:53 -0300 prosurrhel1 (11730)] INFO : Finished instrumentation
+[12/02/14 09:20:15 -0300 prosurrhel1 (11755)] INFO : Starting the New Relic agent in "development" environment.
+[12/02/14 09:20:15 -0300 prosurrhel1 (11755)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[12/02/14 09:20:15 -0300 prosurrhel1 (11755)] INFO : Reading configuration from config/newrelic.yml (/usr/share/smpp_gateway_prosur)
+[12/02/14 09:20:15 -0300 prosurrhel1 (11755)] INFO : Environment: development
+[12/02/14 09:20:15 -0300 prosurrhel1 (11755)] INFO : No known dispatcher detected.
+[12/02/14 09:20:15 -0300 prosurrhel1 (11755)] INFO : Application: My Application (Development)
+[12/02/14 09:20:15 -0300 prosurrhel1 (11755)] INFO : Installing Net instrumentation
+[12/02/14 09:20:15 -0300 prosurrhel1 (11755)] INFO : Installing deferred Rack instrumentation
+[12/02/14 09:20:15 -0300 prosurrhel1 (11755)] INFO : Installing Rack::Builder middleware instrumentation
+[12/02/14 09:20:15 -0300 prosurrhel1 (11755)] INFO : Finished instrumentation

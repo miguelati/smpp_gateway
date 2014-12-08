@@ -1,10 +1,10 @@
 # Your starting point for daemon specific classes. This directory is
 # already included in your load path, so no need to specify it.
 require 'celluloid/autostart'
-require 'em-kannel'
 require 'json'
 require 'rack'
 require 'rack/handler'
+require 'rack/contrib'
 require 'puma'
 require 'timers'
 require 'json'
@@ -14,18 +14,19 @@ require 'simple_router/dsl'
 require 'simple_router/routes'
 require 'open-uri'
 require 'httparty'
+require 'uri'
 
 Rubinius::CodeLoader.require_compiled 'kannel'
 Rubinius::CodeLoader.require_compiled 'channel_factory'
 Rubinius::CodeLoader.require_compiled 'kannel_handler'
 Rubinius::CodeLoader.require_compiled 'amqp_helper'
 
-EventMachine::Kannel::Message.class_eval do
-  _validators.reject!{ |key, _| key == :body }
-  _validate_callbacks.reject! do |callback|
-    callback.raw_filter.attributes == [:body]
-  end
-end
+#EventMachine::Kannel::Message.class_eval do
+#  _validators.reject!{ |key, _| key == :body }
+#  _validate_callbacks.reject! do |callback|
+#    callback.raw_filter.attributes == [:body]
+#  end
+#end
 
 $supervisor = Celluloid::SupervisionGroup.run!
 
