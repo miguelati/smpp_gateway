@@ -1,3 +1,9 @@
+class IdUniqueError < StandardError;end
+
+class MessageExpired < StandardError;end
+
+class KannelFailed < StandardError;end
+
 class ChannelFactory
 
   def self.create(channel_name)
@@ -9,82 +15,119 @@ class ChannelFactory
         @options = config
       end
 
+      def logger(type, opt={})
+        log_content = "Class=ChannelFactory," + opt.map {|k, v| k.to_s + "=" + v }.join(",")
+        DaemonKit.logger.send(type, log_content)
+      end
+
+      def send_status(sms, status)
+        unless sms['id'].nil? || sms['id'] == ""
+          begin
+            @helper.publish({id: sms['id'], status: status}.to_json, :routing_key => @options['activemq_topic_response'], :persistent => true, :content_type => 'text/json') do |connection|
+              logger('info', 'Status' => "AMQ Message: {id: #{sms['id']}, status: #{status}}")
+            end
+          rescue Exception => e
+            logger('error', 'Status' => 'Error on \'send_status\'', 'Error' => e.to_s)
+          end
+        end
+      end
+
+      def send_status_from_original(status)
+        if @message_original['type'] == '1'
+          send_status(@message_original['body'], status)
+        else
+          @message_original['body'].each {|sms| send_status(sms, status)}
+        end
+      end
+
       def connect_queues(connection)
         @connection = connection
 
         @helper = AmqpHelper.new(@connection)
         @helper.subscribe(@options['activemq_topic_sender'], durable: true) do |metadata, payload|
-          process_message(payload)
+          @message_raw = payload
+          process_message
         end
       end
 
-      def process_message(msg)
+      def check_message_expired
+        raise MessageExpired, "This message are expired!" unless @message_original['expire_in'].nil? || Time.parse(@message_original['expire_in']) > Time.now
+      end
+
+      def process_message
         begin
-          msg_parsed = JSON.parse(msg)
-          if msg_parsed['type'] == "1" && ((!msg_parsed['expire_in'].nil? && DateTime.parse(msg_parsed['expire_in']) > DateTime.now) || msg_parsed['expire_in'].nil?)
-            DaemonKit.logger.debug " Received message type: 1"
-            send_sms(msg_parsed['body']);
-          elsif msg_parsed['type'] == "2"
-            DaemonKit.logger.debug "Received message type: 2 with #{msg_parsed['body'].size} SMS"
-            msg_parsed['body'].each do |msg_to_send|
-              send_sms(msg_to_send)
-              sleep(1.0/$config['configuration']['delay_per_second']) # Evita que se vayan más mensajes por segundo
-            end
-          end
+          @message_original = JSON.parse(@message_raw)
+          logger('info','Status' => 'MessageReceived', 'Type' => @message_original['type'])
+          check_message_expired
+          analize_to_send
+        rescue MessageExpired => e
+          logger('info','Status' => 'MessageExpired', 'ExpireIn' => @message_original['expire_in'])
+          send_status_from_original('NACK_DAEMON_EXPIRED')
         rescue Exception => e
-          DaemonKit.logger.error e.inspect
+          logger('error', 'Status' => 'ErrorProcessMessage', 'Exception' => e.to_s, 'backtrace' => e.backtrace.to_s)
+          send_status_from_original('NACK_DAEMON')
         end
       end
 
-      def response_ok(message)
-        unless message['id'].nil? || message['id'] == ""
-          @helper.publish({id: message['id'], status: "ACK_DAEMON"}.to_json, :routing_key => @options['activemq_topic_response'], :persistent => true, :content_type => 'text/json') do |connection|
-            DaemonKit.logger.debug "Response is ok!"
-          end
+      def analize_to_send
+        sms_to_send = []
+        if @message_original['type'] == '1'
+          sms_to_send << clean_message(@message_original['body'])
+        else
+          @message_original['body'].each {|only_sms| sms_to_send << clean_message(only_sms) }
         end
+        sms_to_send.each { |sms| send_sms(sms) }
       end
 
-      def prepare_dlr_url(app, msg_id)
-        "http://localhost:#{$config['configuration']['dlr_port']}/?type=%d&error=%A&id=#{msg_id}&app=#{app}"
+      def prepare_dlr_url(sms)
+        "http://localhost:#{$config['configuration']['dlr_port']}/?type=%d&error=%A&id=#{sms['id']}&app=#{@options['name']}"
       end
 
-      def insert_msg_to_storage(options, msg)
-        registro = Sender.create(from: @options['short_number'], to: msg['cellphone'], message: msg['message'], app: @options['name'], status: 'PENDING', id_message: msg['id'])
-        response_ok(msg)
-        @options['mongo_id'] = registro.id
-        registro
+      def insert_msg_to_storage(sms)
+        @mongo_row = Sender.create(from: @options['short_number'], to: sms['cellphone'], message: sms['message'], app: @options['name'], status: 'PENDING', id_message: sms['id'])
+        logger('debug', 'Status' => 'Save row on [MongoDB.Senders]')
       end
 
       def prepare_message(message)
-        message.gsub(/[^\P{C}\n]+/u,'').tr('áéíóúÁÉÍÓÚ', 'aeiouAEIOU').gsub(/ñ/,'nh').gsub(/Ñ/,'Nh').gsub(/”/, "\"").gsub(/“/,"\"")
+        message.gsub(/[^\P{C}\n]+/u,'').tr('áéíóúñÁÉÍÓÚÑ”“', 'aeiounAEIOUN""')
       end
 
-      def status_kannel_process(options, msg, dlr)
-        status = "PENDING"
+      def prepare_cellphone(cellphone)
+        cellphone.strip.gsub(/[^0987654321 +-]/, '')
+      end
 
-        @kannel = Server::Kannel.new(username: @options['kannel_user'], password: @options['kannel_pass'], url: @options['kannel_url'], :dlr_mask => $config['configuration']['dlr_mask'], :dlr_callback_url => dlr)
+      def clean_message(sms)
+        {'id' => sms['id'], 'cellphone' => prepare_cellphone(sms['cellphone']),'message' => prepare_message(sms['message'])}
+      end
 
-        @kannel.send_sms(from: @options['short_number'], to: msg['cellphone'],body: prepare_message(msg['message'])) do |response|
-          sended = Sender.find(@options['mongo_id'])
+      def status_kannel_process(sms)
+        logger('info', 'sms' => sms.inspect)
+        @kannel = Server::Kannel.new(username: @options['kannel_user'], password: @options['kannel_pass'], url: @options['kannel_url'], :dlr_mask => $config['configuration']['dlr_mask'], :dlr_callback_url => prepare_dlr_url(sms))
+        @kannel.send_sms(from: @options['short_number'], to: sms['cellphone'],body: sms['message']) do |response|
           if response.success?
-            sended.status = 'SUCCESS'
+            @mongo_row.status = 'SUCCESS'
           else
-            sended.status = 'RETRY'
+            @mongo_row.status = 'ERROR'
+            send_status(sms, 'NACK_DAEMON')
           end
-          sended.save
+          @mongo_row.save
+          logger('info', 'Status' => "kannel report status: #{@mongo_row.status}")
         end
-
-        status
       end
 
-      def send_sms(msg)
+      def check_if_unique(sms)
+        raise IdUniqueError, "This id: #{sms['id']} not unique" if Sender.where(id_message: sms['id'], app: @options['name']).count > 0
+      end
+
+      def send_sms(sms)
         begin
-          registro = insert_msg_to_storage(@options, msg)
-          dlr = prepare_dlr_url(@options['name'], msg['id'])
-          registro.status = status_kannel_process(@options, msg, dlr)
-          registro.save
-        rescue Exception => e
-          DaemonKit.logger.debug e.inspect
+          check_if_unique(sms)
+          send_status(sms, 'ACK_DAEMON')
+          insert_msg_to_storage(sms)
+          status_kannel_process(sms)
+        rescue IdUniqueError => e
+          logger('error', 'Status' => 'ErrorProcessMessage', 'Exception' => e.to_s)
+          send_status(sms, 'NACK_DAEMON_DUPLICATED_ID')
         end
       end
     end

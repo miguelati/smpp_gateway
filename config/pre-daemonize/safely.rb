@@ -12,7 +12,7 @@
 
 # Comment out to use email exceptions
 require 'safely'
-require 'mail'
+#require 'mail'
 
 #Mail.defaults do
 #  delivery_method :smtp, {

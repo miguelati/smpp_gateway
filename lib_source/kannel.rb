@@ -162,7 +162,7 @@ module Server
 			configuration.validate!
 			message = Message.new(message_options)
 			message.validate!
-			
+
 			client = Client.new(message, configuration)
 			client.deliver(&block)
 		end

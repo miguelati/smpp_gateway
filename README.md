@@ -1,84 +1,129 @@
-daemon-kit README
+#SMPPP_GATEWAY
 ================
 
-daemon-kit has generated a skeleton Ruby daemon for you to build on. Please read
-through this file to ensure you get going quickly.
+Gateway to manage one or more kannel servers or connections to differents apps, we need just only configure a yml file and read a differents message formats.
 
-Message to test (RabbitMQ Message)
+The daemon automatic create 3 queues for each app, example:
+
+You create add an app to yml with the name "horoscopo" you need to specify
+
+com.smpp_gateway.**horoscopo**.sender   => _you put a json to send SMS to terminal_
+com.smpp_gateway.**horoscopo**.response => _daemon comunicate to your app what happen with you SMS sended_
+com.smpp_gateway.**horoscopo**.receiver => _All SMS sended from Terminal to your App_
+
+{"body":[{"cellphone":"0981460196","message":"Prueba","id":"1616070"}],"type":"2","expire_in":"03\/04\/2015 02:16:10"}
+
+## Format message (put on com.smpp_gateway.[name_app].sender queue)
 =================================
-{"body":{"cellphone":"0981460196","message":"Test of bulk", "id": "123"},"type":"1", "expire_in":"10/04/2014 18:20:00"}
-{"body":{"cellphone":"0981460196","message":"Test of bulk", "id": "123"},"type":"1"}
-{"body":{"message":"HOla llega el mensaje","cellphone":"0981714008"},"type":"1"}
-{"body":[
-  {"cellphone":"0981460196","message":"Respondan ok este mensaje cuando reciban por favor. Gracias"},
-    {"cellphone":"0971222540","message":"Respondan ok este mensaje cuando reciban por favor. Gracias"},
-    {"cellphone":"0985300043","message":"Respondan ok este mensaje cuando reciban por favor. Gracias"},
-    {"cellphone":"0981714008","message":"Respondan ok este mensaje cuando reciban por favor. Gracias"},
-    {"cellphone":"0971303196","message":"Respondan ok este mensaje cuando reciban por favor. Gracias"},
-    {"cellphone":"0981495681","message":"Respondan ok este mensaje cuando reciban por favor. Gracias"},
-    {"cellphone":"0971717273","message":"Respondan ok este mensaje cuando reciban por favor. Gracias"},
-    {"cellphone":"0971443227","message":"Respondan ok este mensaje cuando reciban por favor. Gracias"},
-    {"cellphone":"0971856056","message":"Respondan ok este mensaje cuando reciban por favor. Gracias"},
-    {"cellphone":"0982192051","message":"Respondan ok este mensaje cuando reciban por favor. Gracias"},
-    {"cellphone":"0971789293","message":"Respondan ok este mensaje cuando reciban por favor. Gracias"}
-],"type":"2"}
 
-Directories
-===========
+~~~~~~json
+{
+    "body":{
+        "cellphone":"0981460196",
+        "message":"Test of bulk", 
+        "id": "123"
+    },
+    "type":"1", 
+    "expire_in":"10/04/2014 18:20:00"
+}
+{
+    "body":{
+        "cellphone":"0981460196",
+        "message":"Test of bulk", 
+        "id": "123"
+    },
+    "type":"1"
+}
 
-bin/
-  smpp_gateway - Stub executable to control your daemon with
+{
+    "body":[
+        {
+            "cellphone":"0981460196",
+            "message":"Respondan ok este mensaje cuando reciban por favor."
+            "id":"123"
+        },
+        {
+            "cellphone":"0971222540",
+            "message":"Respondan ok este mensaje cuando reciban por favor."
+            "id": "124"
+        }
+    ],
+    "type":"2",
+    "expire_in": "10/04/2014 18:20:00"
+}
+~~~~~~
 
-config/
-  Environment configuration files
+## RESPONSE DAEMON (recive on com.smpp_gateway.[name_app].response queue)
+==================
 
-lib/
-  Place for your libraries
+### Correcto y pendiente de respuesta de la operadora
 
-libexec/
-  smpp_gateway.rb - Your daemon code
+~~~~~~json
+{'id': '1111', 'status':'ACK_DAEMON'}
+~~~~~~
 
-log/
-  Log files based on the environment name
+### Error en el formato
 
-spec/
-  rspec's home
+~~~~~~json
+{'id': '1111', 'status':'NACK_DAEMON_BAD_FORMAT'}
+~~~~~~
 
-tasks/
-  Place for rake tasks
+### Error cuando el "id" es duplicado
 
-vendor/
-  Place for unpacked gems and DaemonKit
+~~~~~~json
+{'id': '1111', 'status':'NACK_DAEMON_ID_EXISTS'}
+~~~~~~
 
-tmp/
-  Scratch folder
+### Error cuando el mensaje expiró
 
-Rake Tasks
-==========
+~~~~~~json
+{'id': '1111', 'status':'NACK_DAEMON_EXPIRED'}
+~~~~~~
 
-Note that the Rakefile does not load the `config/environments.rb` file, so if you have
-environment-specific tasks (such as tests), you will need to call rake with the environment:
+### Error error en el proceso
 
-    DAEMON_ENV=staging bundle exec rake -T
+~~~~~~json
+{'id': '1111', 'status':'NACK_DAEMON'}
+~~~~~~
 
-Logging
-=======
 
-One of the biggest issues with writing daemons are getting insight into what your
-daemons are doing. Logging with daemon-kit is simplified as DaemonKit creates log
-files per environment in log.
+## RESPONSE OPERATOR
+====================
 
-On all environments except production the log level is set to DEBUG, but you can
-toggle the log level by sending the running daemon SIGUSR1 and SIGUSR2 signals.
-SIGUSR1 will toggle between DEBUG and INFO levels, SIGUSR2 will blatantly set the
-level to DEBUG.
+### Correcto y entregado a la persona
 
-Bundler
-=======
+~~~~~~json
+{'id': '1111', 'status':'ACK_SMSC'}
+~~~~~~
 
-daemon-kit uses bundler to ease the nightmare of dependency loading in Ruby 
-projects. daemon-kit and its generators all create/update the Gemfile in the
-root of the daemon. You can satisfy the project's dependencies by running
-`bundle install` from within the project root.
+### Error en el número
+~~~~~~json
+{'id': '1111', 'status':'NACK_SMSC_INVALID_NUMBER'}
+~~~~~~
 
-For more information on bundler, please see http://github.com/carlhuda/bundler
+### Error cuando no hay saldo
+~~~~~~json
+{'id': '1111', 'status':'NACK_SMSC_NO_MONEY'}
+~~~~~~
+
+### Error cuando no se pudo obtener los datos del usuario
+~~~~~~json
+{'id': '1111', 'status':'NACK_SMSC_NO_USERDATA'}
+~~~~~~
+
+### Error generico de la operadora
+~~~~~~json
+{'id': '1111', 'status':'NACK_SMSC_GENERIC_ERROR'}
+~~~~~~
+
+### Cualquier error en el proceso
+~~~~~~json
+{'id': '1111', 'status':'NACK_SMSC'}
+~~~~~~
+
+## RECEIVE MESSAGE FROM TERMINALS
+
+### Format
+~~~~~~json
+{'from': '0981460196', 'to': '20800', 'message':'Test', 'incoming_at': '2015-02-17T23:30:00.99'}
+~~~~~~

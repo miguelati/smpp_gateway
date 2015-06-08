@@ -1,3 +1,7 @@
+require 'unicorn/worker_killer'
+
+
+
 # Generated amqp daemon
 # Do your post daemonization configuration here
 # At minimum you need just the first line (without the block), or a lot
@@ -14,16 +18,20 @@ end
 $pid = []
 #Receiver for kannel message
 $pid << fork do
-
   Signal.trap("HUP") { exit }
   $config = DaemonKit::Config.load('configurations')
   app_kannel_handler = Rack::Builder.new do
-    use  Rack::MailExceptions do |mail|
-      mail.to 'miguel.godoy@me.com'
-      mail.from 'miguelgodoyg@gmail.com'
-      mail.subject '[KannelHandler] %s'
-      mail.smtp $config['configuration']['smtp_settings']
-    end
+    #use  Rack::MailExceptions do |mail|
+    #  mail.to 'miguel.godoy@me.com'
+    #  mail.from 'miguelgodoyg@gmail.com'
+    #  mail.subject '[KannelHandler] %s'
+    #  mail.smtp $config['configuration']['smtp_settings']
+    #end
+    # Max requests per worker
+    #use Unicorn::WorkerKiller::MaxRequests, 2 * 3072, 2 * 4096
+
+    # Max memory size (RSS) per worker
+    #use Unicorn::WorkerKiller::Oom, (1024*(1024**2)), (1280*(1024**2))
     run KannelHandler.new
   end
 
@@ -35,17 +43,17 @@ $pid << fork do
 end
 
 # Timer for tasks
-$pid << fork do
-  Rubinius::CodeLoader.require_compiled 'retry'
-  Signal.trap("HUP") { exit }
+#$pid << fork do
+#  Rubinius::CodeLoader.require_compiled 'retry'
+#  Signal.trap("HUP") { exit }
 
-  DaemonKit::Cron.scheduler.every("1m") do
-    #DaemonKit.logger.debug "Scheduled task completed at #{Time.now}"
-    Retry.find_sms_enqueued
-  end
+#  DaemonKit::Cron.scheduler.every("1m") do
+#    #DaemonKit.logger.debug "Scheduled task completed at #{Time.now}"
+#    Retry.find_sms_enqueued
+#  end
 
-  DaemonKit::Cron.run
-end
+#  DaemonKit::Cron.run
+#end
 
 # API Server
 if $config['configuration']['api_server_enabled']
@@ -61,6 +69,11 @@ if $config['configuration']['api_server_enabled']
         mail.subject '[KannelHandler] %s'
         mail.smtp $config['configuration']['smtp_settings']
       end
+      # Max requests per worker
+      use Unicorn::WorkerKiller::MaxRequests, 3072, 4096
+
+      # Max memory size (RSS) per worker
+      use Unicorn::WorkerKiller::Oom, (192*(1024**2)), (256*(1024**2))
       run ApiServer.new
     end
 
@@ -94,9 +107,12 @@ DaemonKit::AMQP.run do |connection|
   # amq.queue('test').subscribe do |msg|
   #   DaemonKit.logger.debug "Received message: #{msg.inspect}"
   # end
-
-  $config['configuration']['channels'].size.times do |inx|
-    $supervisor.actors[inx].connect_queues(connection)
+  begin
+    $config['configuration']['channels'].size.times do |inx|
+      $supervisor.actors[inx].connect_queues(connection)
+    end
+  rescue Exception => e
+    DaemonKit.logger.info e.inspect
   end
 
 end

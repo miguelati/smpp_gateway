@@ -1,0 +1,9 @@
+{
+    "type": "sftp",
+    "host": "apps.prosursa.com",
+    "username": "root",
+    "password": "AS2014Pr0sur",
+    "port": 22,
+    "remotePath": "/usr/share/smpp_gateway_prosur/",
+    "uploadOnSave": false
+}

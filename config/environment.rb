@@ -1,13 +1,14 @@
 require 'yaml'
 require 'mongoid'
 
+
 # Be sure to restart your daemon when you modify this file
 
 Dir["#{File.dirname(__FILE__)}/../models/*.rb"].each {|file| require file }
 
 # Uncomment below to force your daemon into production mode
 ENV['DAEMON_ENV'] ||= 'production'
-ENV["UNICORN_WORKERS"] = '5'
+ENV["UNICORN_WORKERS"] = '6'
 #ENV['DAEMON_ENV'] ||= 'development'
 
 # Boot up

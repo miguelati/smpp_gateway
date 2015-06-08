@@ -23,13 +23,58 @@ configuration:
   api_server_port: 8000
   channels:
     -
+      name: "HeroesDeLaPatria"
+      pool_size: 3
+      activemq_topic_sender: com.smpp_gateway.heroes_de_la_patria.sender
+      activemq_topic_receiver: com.smpp_gateway.heroes_de_la_patria.receiver
+      activemq_topic_response: com.smpp_gateway.heroes_de_la_patria.response
+      receiver_expression: '^(turno|turnos)'
+      #short_number: 0972283718
+      #kannel_user: OPINA
+      #kannel_pass: abc12345
+      short_number: 0976868200
+      kannel_user: HEROES
+      kannel_pass: abc12345
+      kannel_url: http://localhost:13013/cgi-bin/sendsms
+      api_server:
+        enabled: false
+        users:
+          -
+            name: "turnos_user"
+            pass: "abc12345@@"
+      default: 1
+    -
+      name: "Farmatotal"
+      pool_size: 3
+      activemq_topic_sender: com.smpp_gateway.farmatotal.sender
+      activemq_topic_receiver: com.smpp_gateway.farmatotal.receiver
+      activemq_topic_response: com.smpp_gateway.farmatotal.response
+      receiver_expression: '^(turno|turnos)'
+      #short_number: 0972283718
+      #kannel_user: OPINA
+      #kannel_pass: abc12345
+      short_number: 0976868100
+      kannel_user: FARMATOTAL
+      kannel_pass: abc12345
+      kannel_url: http://localhost:13013/cgi-bin/sendsms
+      api_server:
+        enabled: false
+        users:
+          -
+            name: "turnos_user"
+            pass: "abc12345@@"
+      default: 1
+    -
       name: "Opina"
       pool_size: 2
       activemq_topic_sender: com.smpp_gateway.opina.sender
       activemq_topic_receiver: com.smpp_gateway.opina.receiver
       activemq_topic_response: com.smpp_gateway.opina.response
       receiver_expression: '^(.*)'
-      short_number: 0972283718
+      #short_number: 0972444000
+      #kannel_user: BULK
+      #kannel_pass: abc12345
+      short_number: 0972444000
       kannel_user: OPINA
       kannel_pass: abc12345
       kannel_url: http://localhost:13013/cgi-bin/sendsms
@@ -47,7 +92,10 @@ configuration:
       activemq_topic_receiver: com.smpp_gateway.turnos.receiver
       activemq_topic_response: com.smpp_gateway.turnos.response
       receiver_expression: '^(turno|turnos)'
-      short_number: 0972444000
+      #short_number: 0972283718
+      #kannel_user: OPINA
+      #kannel_pass: abc12345
+      short_number: 0972283718
       kannel_user: TURNOS
       kannel_pass: abc12345
       kannel_url: http://localhost:13013/cgi-bin/sendsms
@@ -65,17 +113,20 @@ configuration:
       activemq_topic_receiver: com.smpp_gateway.bulk.receiver
       activemq_topic_response: com.smpp_gateway.bulk.response
       receiver_expression: '^(bulk|bul)'
-      short_number: 0972444000
+      #short_number: 0972283718
+      #kannel_user: OPINA
+      #kannel_pass: abc12345
+      short_number: 0972868000
       kannel_user: BULK
       kannel_pass: abc12345
       kannel_url: http://localhost:13013/cgi-bin/sendsms
       api_server:
-        enabled: true
+        enabled: false
         users:
           -
             name: "bulk_user"
             pass: "abc12345@@"
-      default: 0
+      default: 1
       #remote_kannel_response:
       #  url: http://bulk.lacorunasrl.com/response.php
       #  param_status: status

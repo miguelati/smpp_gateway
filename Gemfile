@@ -33,6 +33,7 @@ gem 'rubysl'
 gem 'simple_router'
 gem 'httparty'
 gem 'tzinfo', '~> 0.3.29'
+gem 'unicorn-worker-killer'
 
 group :development, :test do
   gem 'rake'
